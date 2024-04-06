@@ -1,0 +1,55 @@
+version: '3'
+
+
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        ports:
+            - "80:80"
+        volumes:
+            - './:/var/www/html/'
+        depends_on:
+            - php
+
+    frontend:
+        build:
+            context: .
+            dockerfile: docker/frontend/Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - './frontend:/var/www/app'
+
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        volumes:
+            - './:/var/www/html/'
+        expose:
+            - 9001
+        depends_on:
+            - postgresql
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    postgresql:
+        build:
+            context: .
+            dockerfile: docker/postgresql/Dockerfile
+        ports:
+            - "5432:5432"
+        environment:
+            PGDATA: /var/lib/postgresql/data/pgdata
+        volumes:
+            - pgdata-local:/var/lib/postgresql/data
+        networks:
+            - project
+        env_file:
+            - .env
+
+volumes:
+    pgdata-local:
+        external: true
