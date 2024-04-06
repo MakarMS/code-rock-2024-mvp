@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
 RUN install-php-extensions opcache pdo_pgsql
@@ -9,8 +9,8 @@ ARG USER_ID=1000
 ARG GROUP_ID=1000
 RUN usermod -u $USER_ID www-data && groupmod -g $GROUP_ID www-data
 
-WORKDIR /var/www/html/
-COPY --chown=www-data:www-data . /var/www/html/
+WORKDIR /var/www/app
+COPY --chown=www-data:www-data . /var/www/app
 
 USER root
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
