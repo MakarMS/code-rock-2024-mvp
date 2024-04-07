@@ -25,7 +25,7 @@ const changeLanguage = () => {
             <span class="text-white text-lg font-semibold" title="Easy Route" @click="changeLanguage">Easy Route</span>
         </div>
         <div class="space-x-5">
-            <button v-for="button in $tm('header.buttons')" :key="button.id" :title="button.label"
+            <button v-for="button in $tm('header.buttons')" :title="button.label"
                     class="rounded-full bg-orange-400 hover:bg-opacity-0 text-white hover:border-orange-400 border-2 border-transparent transition-all px-4 py-2">
                 {{ button.label }}
             </button>

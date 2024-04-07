@@ -3,25 +3,21 @@
     "titles": {
         "change_language": "Change language"
     },
+    "copyright": "All rights reserved",
     "header": {
         "menu_items": [
             {
                 "id": 1,
-                "label": "Home",
-                "url": "#home"
-            },
-            {
-                "id": 2,
                 "label": "About Us",
                 "url": "#about"
             },
             {
-                "id": 3,
+                "id": 2,
                 "label": "Services",
                 "url": "#services"
             },
             {
-                "id": 4,
+                "id": 3,
                 "label": "Contacts",
                 "url": "#contacts"
             }
@@ -39,8 +35,39 @@
     },
     "home": {
         "main": {
-            "main_title": "B2B wholesale procurement is the Easy Route",
-            "main_text": "For more than 12 years, we have remained the market leader in the B2B segment for bulk purchasing and delivery management"
+            "about": {
+                "title": "Wholesale B2B Purchases - Easy Route",
+                "text": "For over 12 years, we have remained leaders in the B2B segment in the field of wholesale purchases and delivery management of manufactured products. Our assortment includes thousands of products from trusted suppliers, guaranteeing quality and reliability. We strive to provide our clients with the best cooperation terms and prompt support. Our experience and professionalism allow us to successfully meet the needs of even the most demanding clients. <br><br>Join us and see the benefits of cooperation with the industry leader!"
+            },
+            "services": [
+                {
+                    "title": "B2B Marketplace for Manufacturing Products",
+                    "text": "We provide you with a convenient and secure service for wholesale B2B purchases from manufacturers without risks and intermediaries."
+                },
+                {
+                    "title": "Calculation of Optimal Delivery Routes",
+                    "text": "Our website service calculates optimal delivery routes for you from company warehouses to pickup points, ensuring efficient and reliable transportation."
+                },
+                {
+                    "title": "Logistics Support",
+                    "text": "We provide efficient logistical support for fast and reliable delivery of goods from manufacturers to you, ensuring timely and secure door-to-door delivery."
+                },
+                {
+                    "title": "Round-the-Clock Support",
+                    "text": "We offer round-the-clock support to solve any issues related to your wholesale purchases, providing prompt and reliable assistance for smooth transactions."
+                }
+            ],
+            "contacts": [
+                {
+                    "title": "Buyer Support",
+                    "contacts": ["makar.mikhalchenko@bk.ru", "t.me/makar_mikhalchenko", "+7-(800)-555-35-35"]
+                },
+                {
+                    "title": "Makers Support",
+                    "contacts": ["makar.mikhalchenko@bk.ru", "t.me/makar_mikhalchenko", "+7-(800)-555-35-35"]
+                }
+            ]
         }
     }
+
 }
