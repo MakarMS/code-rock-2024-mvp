@@ -3,12 +3,8 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <template>
-    <footer class="bg-orange-400 text-white py-10">
-        <div class="container mx-auto">
-            <div class="text-center mt-5">
-                &copy; {{ currentYear + ' ' + $t('copyright')}}
-            </div>
-        </div>
+    <footer class="flex justify-center items-center bg-orange-400 text-white py-5">
+        &copy; {{ currentYear + ' ' + $t('copyright') }}
     </footer>
 </template>
 
