@@ -1,0 +1,46 @@
+{
+    "flag": "\uD83C\uDDF7\uD83C\uDDFA",
+    "titles": {
+        "change_language": "Сменить язык"
+    },
+    "header": {
+        "menu_items": [
+            {
+                "id": 1,
+                "label": "Главная",
+                "url": "#home"
+            },
+            {
+                "id": 2,
+                "label": "О нас",
+                "url": "#about"
+            },
+            {
+                "id": 3,
+                "label": "Услуги",
+                "url": "#services"
+            },
+            {
+                "id": 4,
+                "label": "Контакты",
+                "url": "#contacts"
+            }
+        ],
+        "buttons": [
+            {
+                "id": 1,
+                "label": "Вход"
+            },
+            {
+                "id": 2,
+                "label": "Регистрация"
+            }
+        ]
+    },
+    "home": {
+        "main": {
+            "main_title": "Оптовые B2B закупки — это Easy Route",
+            "main_text": "Уже более 12 лет мы остаёмся лидерами на рынке B2B сегмента в сфере оптовых закупок и управлению доставкой"
+        }
+    }
+}

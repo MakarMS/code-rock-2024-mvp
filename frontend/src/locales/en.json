@@ -1,0 +1,46 @@
+{
+    "flag": "\uD83C\uDDFA\uD83C\uDDF8",
+    "titles": {
+        "change_language": "Сменить язык"
+    },
+    "header": {
+        "menu_items": [
+            {
+                "id": 1,
+                "label": "Home",
+                "url": "#home"
+            },
+            {
+                "id": 2,
+                "label": "About Us",
+                "url": "#about"
+            },
+            {
+                "id": 3,
+                "label": "Services",
+                "url": "#services"
+            },
+            {
+                "id": 4,
+                "label": "Contacts",
+                "url": "#contacts"
+            }
+        ],
+        "buttons": [
+            {
+                "id": 1,
+                "label": "Sign In"
+            },
+            {
+                "id": 2,
+                "label": "Sign Up"
+            }
+        ]
+    },
+    "home": {
+        "main": {
+            "main_title": "B2B wholesale procurement is the Easy Route",
+            "main_text": "For more than 12 years, we have remained the market leader in the B2B segment for bulk purchasing and delivery management"
+        }
+    }
+}
