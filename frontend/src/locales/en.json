@@ -11,7 +11,13 @@
         "email": "Email",
         "password": "Password",
         "remember_password": "Remember Password",
-        "to_sign_in": "Sign In"
+        "to_sign_in": "Sign In",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "patronymic": "Patronymic",
+        "sign_up": "Sign Up",
+        "to_sign_up": "Sign Up",
+        "company_name": "Company Name"
     },
     "header": {
         "menu_items": [
@@ -35,7 +41,7 @@
             },
             {
                 "label": "Sign Up",
-                "modal": "signUnModal"
+                "modal": "signUpModal"
             }
         ]
     },

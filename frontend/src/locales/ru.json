@@ -11,7 +11,13 @@
         "email": "Электронная почта",
         "password": "Пароль",
         "remember_password": "Запомнить пароль",
-        "to_sign_in": "Войти"
+        "to_sign_in": "Войти",
+        "first_name": "Имя",
+        "last_name": "Фамилия",
+        "patronymic": "Отчество",
+        "sign_up": "Регистрация",
+        "to_sign_up": "Зарегистрироваться",
+        "company_name": "Название компании"
     },
     "header": {
         "menu_items": [
@@ -35,7 +41,7 @@
             },
             {
                 "label": "Регистрация",
-                "modal": "signUnModal"
+                "modal": "signUpModal"
             }
         ]
     },
