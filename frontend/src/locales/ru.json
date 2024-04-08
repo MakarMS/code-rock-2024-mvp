@@ -19,6 +19,17 @@
         "to_sign_up": "Зарегистрироваться",
         "company_name": "Название компании"
     },
+    "errors": {
+        "required_company_name": "Название компании не заполнено",
+        "required_first_name": "Имя не заполнено",
+        "required_last_name": "Фамилия не заполнена",
+        "required_patronymic": "Отчество не заполнено",
+        "required_email": "Электронная почта не заполнена",
+        "required_password": "Пароль не заполнен",
+        "format_email": "Электронная почта в неверном формате",
+        "min_length_password": "Длинна пароля менее 6-ти символов",
+        "max_length_password": "Длинна пароля более 50-ти символов"
+    },
     "header": {
         "menu_items": [
             {

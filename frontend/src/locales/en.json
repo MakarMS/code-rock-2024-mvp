@@ -19,6 +19,17 @@
         "to_sign_up": "Sign Up",
         "company_name": "Company Name"
     },
+    "errors": {
+        "required_company_name": "Company name is required",
+        "required_first_name": "First name is required",
+        "required_last_name": "Last name is required",
+        "required_patronymic": "Patronymic is required",
+        "required_email": "Email is required",
+        "required_password": "Password is required",
+        "format_email": "Invalid email format",
+        "min_length_password": "Password length is less than 6 characters",
+        "max_length_password": "Password length is more than 50 characters"
+    },
     "header": {
         "menu_items": [
             {
