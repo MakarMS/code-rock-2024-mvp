@@ -3,33 +3,39 @@
     "titles": {
         "change_language": "Change language"
     },
-    "copyright": "All rights reserved",
+    "words": {
+        "copyright": "All rights reserved",
+        "sign_in": "Sign In",
+        "bayer": "Buyer",
+        "maker": "Manufacturer",
+        "email": "Email",
+        "password": "Password",
+        "remember_password": "Remember Password",
+        "to_sign_in": "Sign In"
+    },
     "header": {
         "menu_items": [
             {
-                "id": 1,
                 "label": "About Us",
                 "url": "#about"
             },
             {
-                "id": 2,
                 "label": "Services",
                 "url": "#services"
             },
             {
-                "id": 3,
                 "label": "Contacts",
                 "url": "#contacts"
             }
         ],
         "buttons": [
             {
-                "id": 1,
-                "label": "Sign In"
+                "label": "Sign In",
+                "modal": "signInModal"
             },
             {
-                "id": 2,
-                "label": "Sign Up"
+                "label": "Sign Up",
+                "modal": "signUnModal"
             }
         ]
     },

@@ -3,7 +3,16 @@
     "titles": {
         "change_language": "Сменить язык"
     },
-    "copyright": "Все права защищены",
+    "words": {
+        "copyright": "Все права защищены",
+        "sign_in": "Вход",
+        "bayer": "Покупатель",
+        "maker": "Производитель",
+        "email": "Электронная почта",
+        "password": "Пароль",
+        "remember_password": "Запомнить пароль",
+        "to_sign_in": "Войти"
+    },
     "header": {
         "menu_items": [
             {
@@ -21,10 +30,12 @@
         ],
         "buttons": [
             {
-                "label": "Вход"
+                "label": "Вход",
+                "modal": "signInModal"
             },
             {
-                "label": "Регистрация"
+                "label": "Регистрация",
+                "modal": "signUnModal"
             }
         ]
     },

@@ -4,6 +4,9 @@ import 'primeicons/primeicons.css';
 import BurgerMenuIcon from "@/components/BurgerMenuIcon.vue";
 import {ref} from "vue";
 import BurgerMenuSidebar from "@/components/BurgerMenuSidebar.vue";
+import {openModal} from "jenesius-vue-modal";
+import SignIn from "@/components/modals/SignIn.vue";
+import SignUp from "@/components/modals/SignUp.vue";
 
 const {locale, availableLocales} = useI18n();
 
@@ -16,6 +19,20 @@ const toggleSidebar = () => {
 const changeLanguage = () => {
     locale.value = availableLocales[(availableLocales.indexOf(locale.value) + 1) % availableLocales.length];
 }
+
+const showModal = (modalName) => {
+    const modalComponents = {
+        'signInModal': SignIn,
+        'signUpModal': SignUp
+    };
+
+    const modalComponent = modalComponents[modalName];
+
+    if (modalComponent) {
+        openModal(modalComponent);
+    }
+}
+
 </script>
 
 <template>
@@ -25,7 +42,7 @@ const changeLanguage = () => {
             <span class="text-white text-lg font-semibold" title="Easy Route" @click="changeLanguage">Easy Route</span>
         </div>
         <div class="space-x-5">
-            <button v-for="button in $tm('header.buttons')" :title="button.label"
+            <button v-for="button in $tm('header.buttons')" :title="button.label" @click="showModal(button.modal)"
                     class="rounded-full bg-orange-400 hover:bg-opacity-0 text-white hover:border-orange-400 border-2 border-transparent transition-all px-4 py-2">
                 {{ button.label }}
             </button>
