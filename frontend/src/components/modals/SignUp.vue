@@ -48,7 +48,7 @@
                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                    type="password">
         </div>
-        <button class="w-full bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 rounded" type="submit">
+        <button class="w-full bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 rounded-full" type="submit">
             {{ $t('words.sign_up') }}
         </button>
     </div>

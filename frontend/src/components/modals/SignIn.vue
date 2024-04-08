@@ -32,7 +32,7 @@
             <input v-model="rememberPassword" class="form-checkbox h-5 w-5 text-orange-400" type="checkbox">
             <span class="ml-2 text-gray-700">{{ $t('words.remember_password') }}</span>
         </label>
-        <button class="w-full bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 rounded" type="submit">
+        <button class="w-full bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 rounded-full" type="submit">
             {{ $t('words.to_sign_in') }}
         </button>
     </div>
