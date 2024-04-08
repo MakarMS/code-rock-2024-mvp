@@ -64,7 +64,6 @@ const patronymic = ref('');
 const companyName = ref('');
 const email = ref('');
 const password = ref('');
-const rememberPassword = ref(false);
 const accountType = ref('buyer');
 
 </script>
