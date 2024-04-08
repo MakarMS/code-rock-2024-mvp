@@ -65,7 +65,7 @@ const validate = () => {
         if (!patronymic.value.trim()) {
             errors.push({'patronymic': t('errors.required_patronymic')});
         }
-    } else if (accountType.value === 'producer') {
+    } else if (accountType.value === 'manufacturer') {
         if (!companyName.value.trim()) {
             errors.push({'company_name': t('errors.required_company_name')});
         }
@@ -112,10 +112,10 @@ const resetAllErrorClasses = () => {
                 {{ $t('words.bayer') }}
             </button>
             <button
-                :class="['px-4 py-2 rounded-full font-semibold text-sm ml-2', accountType === 'producer' ? 'bg-orange-400 text-white' : 'bg-gray-300 text-gray-700']"
-                @click="changeAccountType('producer')"
+                :class="['px-4 py-2 rounded-full font-semibold text-sm ml-2', accountType === 'manufacturer' ? 'bg-orange-400 text-white' : 'bg-gray-300 text-gray-700']"
+                @click="changeAccountType('manufacturer')"
             >
-                {{ $t('words.maker') }}
+                {{ $t('words.manufacturer') }}
             </button>
         </div>
         <div v-if="accountType === 'buyer'" class="mb-6">
@@ -133,7 +133,7 @@ const resetAllErrorClasses = () => {
                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                    type="text">
         </div>
-        <div v-if="accountType === 'producer'" class="mb-6">
+        <div v-if="accountType === 'manufacturer'" class="mb-6">
             <input id="company_name" v-model="companyName" :placeholder="$t('words.company_name')"
                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                    type="text">

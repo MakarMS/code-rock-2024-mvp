@@ -12,10 +12,10 @@
                 {{ $t('words.bayer') }}
             </button>
             <button
-                :class="['px-4 py-2 rounded-full font-semibold text-sm ml-2', accountType === 'producer' ? 'bg-orange-400 text-white' : 'bg-gray-300 text-gray-700']"
-                @click="accountType = 'producer'"
+                :class="['px-4 py-2 rounded-full font-semibold text-sm ml-2', accountType === 'manufacturer' ? 'bg-orange-400 text-white' : 'bg-gray-300 text-gray-700']"
+                @click="accountType = 'manufacturer'"
             >
-                {{ $t('words.maker') }}
+                {{ $t('words.manufacturer') }}
             </button>
         </div>
         <div class="mb-6">
