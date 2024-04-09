@@ -7,6 +7,7 @@ import axios from "@/axios.js";
 import router from "@/router.js";
 
 const {t} = useI18n();
+const toast = useToast();
 
 const firstName = ref('');
 const lastName = ref('');
@@ -25,7 +26,7 @@ const changeAccountType = (type) => {
 
 const register = () => {
     const errors = validate();
-    const toast = useToast();
+
 
     for (const error of errors) {
         const key = Object.keys(error)[0];
@@ -61,8 +62,9 @@ const register = () => {
                 localStorage.setItem('account_type', accountType.value);
                 toast.success(t('sentences.success_registration'))
                 setTimeout(() => {
+                    closeModal();
                     router.push(`/${accountType.value}`);
-                }, 2000);
+                }, 3000);
             })
             .catch(error => {
                 const authCodes = {

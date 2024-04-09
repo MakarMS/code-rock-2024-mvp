@@ -35,7 +35,8 @@
     },
     "sentences": {
         "success_registration": "Регистрация прошла успешно",
-        "success_login": "Вы успешно аутентифицировались"
+        "success_login": "Вы успешно аутентифицировались",
+        "in_account": "В аккаунт"
     },
     "header": {
         "menu_items": [

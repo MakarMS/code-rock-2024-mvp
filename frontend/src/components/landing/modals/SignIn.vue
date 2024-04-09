@@ -50,8 +50,9 @@ const login = () => {
                 localStorage.setItem('account_type', accountType.value);
                 toast.success(t('sentences.success_login'));
                 setTimeout(() => {
+                    closeModal();
                     router.push(`/${accountType.value}`);
-                }, 2000);
+                }, 3000);
             })
             .catch(error => {
                 const authCodes = {

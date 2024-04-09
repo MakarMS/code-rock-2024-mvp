@@ -22,12 +22,14 @@ Route::prefix('user')->group(function () {
             Route::post('/register', [BuyerAuthController::class, 'register']);
             Route::post('/login', [BuyerAuthController::class, 'login']);
             Route::post('/refresh', [BuyerAuthController::class, 'refresh']);
+            Route::post('/valid', [BuyerAuthController::class, 'valid']);
         });
 
         Route::prefix('manufacturer')->group(function () {
             Route::post('/register', [ManufacturerAuthController::class, 'register']);
             Route::post('/login', [ManufacturerAuthController::class, 'login']);
             Route::post('/refresh', [ManufacturerAuthController::class, 'refresh']);
+            Route::post('/valid', [ManufacturerAuthController::class, 'valid']);
         });
 
     });

@@ -57,4 +57,9 @@ class ManufacturerAuthController extends Controller
     {
         return (new UserAuthService())->respondWithToken(Auth::refresh());
     }
+
+    public function valid(): JsonResponse
+    {
+        return new JsonResponse(['status' => Auth::guard('manufacturer')->check()]);
+    }
 }

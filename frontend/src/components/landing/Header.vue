@@ -1,12 +1,14 @@
 <script setup>
 import {useI18n} from "vue-i18n";
 import 'primeicons/primeicons.css';
-import BurgerMenuIcon from "@/components/BurgerMenuIcon.vue";
+import BurgerMenuIcon from "@/components/landing/BurgerMenuIcon.vue";
 import {ref} from "vue";
-import BurgerMenuSidebar from "@/components/BurgerMenuSidebar.vue";
+import BurgerMenuSidebar from "@/components/landing/BurgerMenuSidebar.vue";
 import {openModal} from "jenesius-vue-modal";
-import SignIn from "@/components/modals/SignIn.vue";
-import SignUp from "@/components/modals/SignUp.vue";
+import SignIn from "@/components/landing/modals/SignIn.vue";
+import SignUp from "@/components/landing/modals/SignUp.vue";
+import router from "@/router.js";
+import axios from "@/axios.js";
 
 const {locale, availableLocales} = useI18n();
 
@@ -33,6 +35,30 @@ const showModal = (modalName) => {
     }
 }
 
+const isAuthenticated = ref(true);
+const accountType = localStorage.getItem('account_type');
+
+const checkAuthentication = async () => {
+    try {
+        if (accountType) {
+            axios.post(`/api/user/auth/${accountType}/valid`).then(
+                (response) => {
+                    isAuthenticated.value = response.status;
+                }
+            );
+        }
+    } catch (error) {
+        toast.success(t('sentences.success_registration'));
+    }
+};
+
+router.beforeEach((to, from, next) => {
+    checkAuthentication();
+    next();
+});
+
+checkAuthentication()
+
 </script>
 
 <template>
@@ -42,10 +68,15 @@ const showModal = (modalName) => {
             <span class="text-white text-lg font-semibold" title="Easy Route" @click="changeLanguage">Easy Route</span>
         </div>
         <div class="space-x-5">
-            <button v-for="button in $tm('header.buttons')" :title="button.label" @click="showModal(button.modal)"
+            <button v-if="!isAuthenticated" v-for="button in $tm('header.buttons')" :title="button.label" @click="showModal(button.modal)"
                     class="rounded-full bg-orange-400 hover:bg-opacity-0 text-white hover:border-orange-400 border-2 border-transparent transition-all px-4 py-2">
                 {{ button.label }}
             </button>
+            <router-link v-if="isAuthenticated" :to="`/dashboard/${accountType}`" :title="$t('sentences.in_account')">
+                <button class="rounded-full bg-orange-400 hover:bg-opacity-0 text-white hover:border-orange-400 border-2 border-transparent transition-all px-4 py-2">
+                    {{ $t('words.' + accountType) }}
+                </button>
+            </router-link>
             <button :title="$t('titles.change_language')" class="relative top-1.5" @click="changeLanguage">
                 <i class="pi pi-language text-white hover:text-orange-400 text-2xl"></i>
             </button>
