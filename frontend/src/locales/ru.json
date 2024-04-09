@@ -17,7 +17,10 @@
         "patronymic": "Отчество",
         "sign_up": "Регистрация",
         "to_sign_up": "Зарегистрироваться",
-        "company_name": "Название компании"
+        "company_name": "Название компании",
+        "routes": "Маршруты",
+        "products": "Изделия",
+        "statistics": "Статистика"
     },
     "errors": {
         "required_company_name": "Название компании не заполнено",
@@ -61,6 +64,20 @@
             {
                 "label": "Регистрация",
                 "modal": "signUpModal"
+            }
+        ],
+        "manufacturer_header": [
+            {
+                "label": "Маршруты",
+                "route": "routes"
+            },
+            {
+                "label": "Продукты",
+                "route": "products"
+            },
+            {
+                "label": "Статистика",
+                "route": "statistics"
             }
         ]
     },
