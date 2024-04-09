@@ -61,10 +61,8 @@ const register = () => {
             .then(() => {
                 localStorage.setItem('account_type', accountType.value);
                 toast.success(t('sentences.success_registration'))
-                setTimeout(() => {
-                    closeModal();
-                    router.push(`/${accountType.value}`);
-                }, 3000);
+                closeModal();
+                router.push(`/${accountType.value}`);
             })
             .catch(error => {
                 const authCodes = {

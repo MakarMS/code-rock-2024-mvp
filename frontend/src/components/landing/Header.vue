@@ -35,7 +35,7 @@ const showModal = (modalName) => {
     }
 }
 
-const isAuthenticated = ref(true);
+let isAuthenticated = ref(false);
 const accountType = localStorage.getItem('account_type');
 
 const checkAuthentication = async () => {
@@ -43,7 +43,7 @@ const checkAuthentication = async () => {
         if (accountType) {
             axios.post(`/api/user/auth/${accountType}/valid`).then(
                 (response) => {
-                    isAuthenticated.value = response.status;
+                    isAuthenticated.value = response.data.status;
                 }
             );
         }
@@ -72,7 +72,7 @@ checkAuthentication()
                     class="rounded-full bg-orange-400 hover:bg-opacity-0 text-white hover:border-orange-400 border-2 border-transparent transition-all px-4 py-2">
                 {{ button.label }}
             </button>
-            <router-link v-if="isAuthenticated" :to="`/dashboard/${accountType}`" :title="$t('sentences.in_account')">
+            <router-link v-if="isAuthenticated" :to="`/${accountType}`" :title="$t('sentences.in_account')">
                 <button class="rounded-full bg-orange-400 hover:bg-opacity-0 text-white hover:border-orange-400 border-2 border-transparent transition-all px-4 py-2">
                     {{ $t('words.' + accountType) }}
                 </button>
