@@ -20,7 +20,8 @@
         "company_name": "Название компании",
         "routes": "Маршруты",
         "products": "Изделия",
-        "statistics": "Статистика"
+        "statistics": "Статистика",
+        "logout": "Выйти"
     },
     "errors": {
         "required_company_name": "Название компании не заполнено",
@@ -39,7 +40,8 @@
     "sentences": {
         "success_registration": "Регистрация прошла успешно",
         "success_login": "Вы успешно аутентифицировались",
-        "in_account": "В аккаунт"
+        "in_account": "В аккаунт",
+        "logout": "Вы успешно вышли из аккаунта"
     },
     "header": {
         "menu_items": [

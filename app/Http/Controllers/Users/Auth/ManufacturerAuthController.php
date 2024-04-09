@@ -62,4 +62,9 @@ class ManufacturerAuthController extends Controller
     {
         return new JsonResponse(['status' => Auth::guard('manufacturer')->check()]);
     }
+
+    public function logout(): void
+    {
+        Auth::logout();
+    }
 }

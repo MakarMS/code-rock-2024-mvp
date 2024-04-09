@@ -23,6 +23,7 @@ Route::prefix('user')->group(function () {
             Route::post('/login', [BuyerAuthController::class, 'login']);
             Route::post('/refresh', [BuyerAuthController::class, 'refresh']);
             Route::post('/valid', [BuyerAuthController::class, 'valid']);
+            Route::post('/logout', [BuyerAuthController::class, 'logout']);
         });
 
         Route::prefix('manufacturer')->group(function () {
@@ -30,6 +31,7 @@ Route::prefix('user')->group(function () {
             Route::post('/login', [ManufacturerAuthController::class, 'login']);
             Route::post('/refresh', [ManufacturerAuthController::class, 'refresh']);
             Route::post('/valid', [ManufacturerAuthController::class, 'valid']);
+            Route::post('/logout', [ManufacturerAuthController::class, 'logout']);
         });
 
     });

@@ -64,4 +64,9 @@ class BuyerAuthController extends Controller
     {
         return new JsonResponse(['status' => Auth::guard('buyer')->check()]);
     }
+
+    public function logout(): void
+    {
+        Auth::logout();
+    }
 }
