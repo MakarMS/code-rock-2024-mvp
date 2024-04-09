@@ -11,7 +11,6 @@ class UserLoginRequest extends FormRequest
         return [
             'email' => 'required|email|max:255',
             'password' => 'required|string|min:6|max:50',
-            'remember_me' => 'required|bool',
         ];
     }
 }

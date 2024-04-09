@@ -11,7 +11,6 @@ const {t} = useI18n();
 
 const email = ref('');
 const password = ref('');
-const rememberMe = ref(false);
 const accountType = ref('buyer');
 
 const changeAccountType = (type) => {
@@ -42,7 +41,6 @@ const login = () => {
         let data = {
             email: email.value,
             password: password.value,
-            remember_me: rememberMe.value,
         }
 
         axios.post(`/api/user/auth/${accountType.value}/login`, data)
@@ -149,10 +147,6 @@ const addErrorFocusListener = (element) => {
                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                    type="password">
         </div>
-        <label class="flex items-center mb-6">
-            <input v-model="rememberMe" class="form-checkbox h-5 w-5 text-orange-400" type="checkbox">
-            <span class="ml-2 text-gray-700">{{ $t('words.remember_password') }}</span>
-        </label>
         <button class="w-full bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 rounded-full" @click="login">
             {{ $t('words.to_sign_in') }}
         </button>

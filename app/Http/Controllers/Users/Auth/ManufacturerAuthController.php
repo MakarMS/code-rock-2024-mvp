@@ -45,7 +45,7 @@ class ManufacturerAuthController extends Controller
         $userAccountService = new UserAuthService();
 
         try {
-            $token = $userAccountService->login($user, 'manufacturer', $request->input('remember_me'));
+            $token = $userAccountService->login($user, 'manufacturer');
         } catch (AuthenticationException) {
             return new JsonResponse(['code' => AuthCodes::WRONG_LOGIN], 401);
         }

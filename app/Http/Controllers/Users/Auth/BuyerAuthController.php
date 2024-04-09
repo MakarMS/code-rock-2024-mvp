@@ -47,7 +47,7 @@ class BuyerAuthController extends Controller
         $userAccountService = new UserAuthService();
 
         try {
-            $token = $userAccountService->login($user, 'buyer', $request->input('remember_me'));
+            $token = $userAccountService->login($user, 'buyer');
         } catch (AuthenticationException) {
             return new JsonResponse(['code' => AuthCodes::WRONG_LOGIN], 401);
         }

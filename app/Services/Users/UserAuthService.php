@@ -23,14 +23,14 @@ class UserAuthService
         return Auth::login($user);
     }
 
-    public function login(User $userModel, string $guard, bool $rememberMe): string
+    public function login(User $userModel, string $guard): string
     {
         $credentials = [
             'email' => $userModel->email,
             'password' => $userModel->password,
         ];
 
-        if ($token = Auth::guard($guard)->attempt($credentials, $rememberMe)) {
+        if ($token = Auth::guard($guard)->attempt($credentials)) {
             return $token;
         }
 
