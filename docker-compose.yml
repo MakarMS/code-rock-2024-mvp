@@ -27,7 +27,6 @@ services:
             dockerfile: docker/php/Dockerfile
         volumes:
             - './:/var/www/app'
-            - '/var/www/app/vendor'
         expose:
             - 9001
         depends_on:

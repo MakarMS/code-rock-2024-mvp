@@ -28,7 +28,14 @@
         "required_password": "Password is required",
         "format_email": "Invalid email format",
         "min_length_password": "Password length is less than 6 characters",
-        "max_length_password": "Password length is more than 50 characters"
+        "max_length_password": "Password length is more than 50 characters",
+        "unexpected_error": "Unexpected error",
+        "not_unique_email": "Email already in use",
+        "wrong_login": "Incorrect email or password"
+    },
+    "sentences": {
+        "success_registration": "Registration successful",
+        "success_login": "You have been successfully authenticated"
     },
     "header": {
         "menu_items": [

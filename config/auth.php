@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Users\BuyerUser;
+use App\Models\Users\ManufacturerUser;
+
 return [
 
     /*
@@ -14,7 +17,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'buyer',
         'passwords' => 'users',
     ],
 
@@ -28,7 +31,7 @@ return [
     | here which uses session storage and the Eloquent user provider.
     |
     | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
+    | Users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
     | Supported: "session"
@@ -36,9 +39,13 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+        'buyer' => [
+            'driver' => 'jwt',
+            'provider' => 'buyer',
+        ],
+        'manufacturer' => [
+            'driver' => 'jwt',
+            'provider' => 'manufacturer',
         ],
     ],
 
@@ -48,7 +55,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
+    | Users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
     | If you have multiple user tables or models you may configure multiple
@@ -60,15 +67,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'buyer' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => BuyerUser::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'manufacturer' => [
+            'driver' => 'eloquent',
+            'model' => ManufacturerUser::class,
+        ]
     ],
 
     /*
@@ -91,8 +97,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'Users' => [
+            'provider' => 'Users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

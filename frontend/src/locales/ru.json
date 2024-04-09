@@ -28,7 +28,14 @@
         "required_password": "Пароль не заполнен",
         "format_email": "Электронная почта в неверном формате",
         "min_length_password": "Длинна пароля менее 6-ти символов",
-        "max_length_password": "Длинна пароля более 50-ти символов"
+        "max_length_password": "Длинна пароля более 50-ти символов",
+        "unexpected_error": "Неизвестная ошибка",
+        "not_unique_email": "Данная электронная почта уже занята",
+        "wrong_login": "Неверная электронная почта или пароль"
+    },
+    "sentences": {
+        "success_registration": "Регистрация прошла успешно",
+        "success_login": "Вы успешно аутентифицировались"
     },
     "header": {
         "menu_items": [

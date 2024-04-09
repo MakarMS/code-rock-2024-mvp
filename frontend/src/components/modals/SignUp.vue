@@ -3,6 +3,8 @@ import {ref} from 'vue';
 import {closeModal} from 'jenesius-vue-modal';
 import {useToast} from 'vue-toastification';
 import {useI18n} from "vue-i18n";
+import axios from "@/axios.js";
+import router from "@/router.js";
 
 const {t} = useI18n();
 
@@ -25,7 +27,6 @@ const register = () => {
     const errors = validate();
     const toast = useToast();
 
-
     for (const error of errors) {
         const key = Object.keys(error)[0];
         const errorMessage = error[key];
@@ -33,20 +34,54 @@ const register = () => {
         const element = document.getElementById(key);
 
         if (element) {
-            element.classList.remove('border-gray-300');
-            element.classList.remove('focus:ring-orange-400');
-            element.classList.add('border-red-600');
-            element.classList.add('focus:ring-red-600');
-
-            element.addEventListener('focusout', () => {
-                element.classList.remove('border-red-600');
-                element.classList.remove('focus:ring-red-600');
-                element.classList.add('border-gray-300');
-                element.classList.add('focus:ring-orange-400');
-            });
+            addErrorClasses(element);
+            addErrorFocusListener(element);
         }
 
         toast.error(errorMessage);
+    }
+
+    if (!errors.length) {
+
+        let data = {
+            email: email.value,
+            password: password.value
+        }
+
+        if (accountType.value === 'buyer') {
+            data.first_name = firstName.value;
+            data.last_name = lastName.value;
+            data.patronymic = patronymic.value;
+        } else {
+            data.company_name = companyName.value;
+        }
+
+        axios.post(`/api/user/auth/${accountType.value}/register`, data)
+            .then(() => {
+                localStorage.setItem('account_type', accountType.value);
+                toast.success(t('sentences.success_registration'))
+                setTimeout(() => {
+                    router.push(`/${accountType.value}`);
+                }, 2000);
+            })
+            .catch(error => {
+                const authCodes = {
+                    1: {selector: 'email', message: t('errors.not_unique_email')}
+                };
+
+                if (error.response && error.response.data && error.response.data.code && authCodes[error.response.data.code]) {
+                    toast.error(authCodes[error.response.data.code].message);
+
+                    const input = document.getElementById(authCodes[error.response.data.code].selector);
+
+                    addErrorClasses(input);
+                    addErrorFocusListener(input);
+
+                } else {
+                    console.error(error)
+                    toast.error(t('errors.unexpected_error'));
+                }
+            });
     }
 }
 
@@ -93,6 +128,23 @@ const resetAllErrorClasses = () => {
     inputs.forEach(input => {
         input.classList.remove('border-red-600', 'focus:ring-red-600');
         input.classList.add('border-gray-300', 'focus:ring-orange-400');
+        input.value = '';
+    });
+}
+
+const addErrorClasses = (element) => {
+    element.classList.remove('border-gray-300');
+    element.classList.remove('focus:ring-orange-400');
+    element.classList.add('border-red-600');
+    element.classList.add('focus:ring-red-600');
+}
+
+const addErrorFocusListener = (element) => {
+    element.addEventListener('focusout', () => {
+        element.classList.remove('border-red-600');
+        element.classList.remove('focus:ring-red-600');
+        element.classList.add('border-gray-300');
+        element.classList.add('focus:ring-orange-400');
     });
 }
 

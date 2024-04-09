@@ -1,7 +1,10 @@
 FROM php:8.3-fpm
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
-RUN install-php-extensions opcache pdo_pgsql
+
+RUN install-php-extensions opcache
+RUN install-php-extensions pdo_pgsql
+RUN install-php-extensions xdebug
 
 RUN apt-get update && apt-get install -y libzip-dev zip && docker-php-ext-install zip
 
