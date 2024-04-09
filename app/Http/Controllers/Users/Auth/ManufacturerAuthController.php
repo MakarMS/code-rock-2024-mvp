@@ -6,7 +6,6 @@ use App\Enums\AuthCodes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\ManufacturerRegistrationRequest;
 use App\Http\Requests\Users\UserLoginRequest;
-use App\Models\Users\BuyerUser;
 use App\Models\Users\ManufacturerUser;
 use App\Services\Users\UserAuthService;
 use Illuminate\Auth\AuthenticationException;
