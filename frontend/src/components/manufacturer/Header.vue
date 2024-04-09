@@ -10,7 +10,7 @@ const changeLanguage = () => {
 <template>
     <header class="bg-white text-orange-400 p-4 flex justify-between items-center shadow-lg">
         <div>
-            <router-link v-for="button in $tm('header.manufacturer_header')" :title="button.label" :to="'/manufacturer/' + button.route" class="font-semibold px-4 py-2 rounded-full hover:border-orange-400 border-2 border-transparent transition-all">
+            <router-link active-class="border-orange-400" v-for="button in $tm('header.manufacturer_header')" :title="button.label" :to="button.route " class="font-semibold px-4 py-2 rounded-full hover:border-orange-400 border-2 border-transparent transition-all ml-5">
                 {{ button.label }}
             </router-link>
         </div>

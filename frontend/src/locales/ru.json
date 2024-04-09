@@ -68,16 +68,20 @@
         ],
         "manufacturer_header": [
             {
+                "label": "Главная",
+                "route": "/manufacturer"
+            },
+            {
                 "label": "Маршруты",
-                "route": "routes"
+                "route": "/manufacturer/routes"
             },
             {
                 "label": "Продукты",
-                "route": "products"
+                "route": "/manufacturer/products"
             },
             {
                 "label": "Статистика",
-                "route": "statistics"
+                "route": "/manufacturer/statistics"
             }
         ]
     },
