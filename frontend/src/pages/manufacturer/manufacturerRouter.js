@@ -9,7 +9,7 @@ export default [
         name: 'Dashboard',
         component: DashboardPage,
         meta: {
-            requiresAuth: true
+            authRequired: true
         }
     },
     {
@@ -17,7 +17,7 @@ export default [
         name: 'Routes',
         component: RoutesPage,
         meta: {
-            requiresAuth: true
+            authRequired: true
         }
     },
     {
@@ -25,7 +25,7 @@ export default [
         name: 'Products',
         component: ProductsPage,
         meta: {
-            requiresAuth: true
+            authRequired: true
         }
     },
     {
@@ -33,7 +33,7 @@ export default [
         name: 'Statistics',
         component: StatisticsPage,
         meta: {
-            requiresAuth: true
+            authRequired: true
         }
     }
 ];

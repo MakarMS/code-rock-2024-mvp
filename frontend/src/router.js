@@ -16,7 +16,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
     try {
-        if (to.meta.requiresAuth) {
+        if (to.meta.authRequired) {
             const response = await axios.post(`/api/user/auth/${localStorage.getItem('account_type') || 'buyer'}/valid`);
             isAuthenticated.value = response.data.status;
         }
@@ -24,7 +24,7 @@ router.beforeEach(async (to, from, next) => {
         isAuthenticated.value = false;
     }
 
-    if (!to.meta.requiresAuth || isAuthenticated.value) {
+    if (!to.meta.authRequired || isAuthenticated.value) {
         next();
     } else {
         next({
