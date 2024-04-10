@@ -65,7 +65,7 @@ class ManufacturerAuthController extends Controller
 
     public function logout(): void
     {
-        if (Auth::check()) {
+        if (Auth::guard('manufacturer')->check()) {
             Auth::logout();
         }
     }
