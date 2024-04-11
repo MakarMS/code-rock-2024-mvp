@@ -138,7 +138,7 @@ const addErrorFocusListener = (element) => {
             </button>
         </div>
         <div class="mb-6">
-            <input v-model="email" :placeholder="$t('words.email')"
+            <input v-model="email" :placeholder="$t('sentences.email')"
                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                    type="email">
         </div>

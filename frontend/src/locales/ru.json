@@ -4,24 +4,24 @@
         "change_language": "Сменить язык"
     },
     "words": {
-        "copyright": "Все права защищены",
         "sign_in": "Вход",
         "bayer": "Покупатель",
         "manufacturer": "Производитель",
-        "email": "Электронная почта",
         "password": "Пароль",
-        "remember_password": "Запомнить пароль",
         "to_sign_in": "Войти",
         "first_name": "Имя",
         "last_name": "Фамилия",
         "patronymic": "Отчество",
         "sign_up": "Регистрация",
         "to_sign_up": "Зарегистрироваться",
-        "company_name": "Название компании",
         "routes": "Маршруты",
         "products": "Изделия",
         "statistics": "Статистика",
-        "logout": "Выйти"
+        "logout": "Выйти",
+        "create": "Создать",
+        "cost": "Стоимость",
+        "distance": "Расстояние",
+        "save": "Сохранить"
     },
     "errors": {
         "required_company_name": "Название компании не заполнено",
@@ -35,13 +35,29 @@
         "max_length_password": "Длинна пароля более 50-ти символов",
         "unexpected_error": "Неизвестная ошибка",
         "not_unique_email": "Данная электронная почта уже занята",
-        "wrong_login": "Неверная электронная почта или пароль"
+        "wrong_login": "Неверная электронная почта или пароль",
+        "required_departure_point": "Выберите точку отправления",
+        "required_arrival_point": "Выберите точку прибытия",
+        "wrong_cost": "Неверная стоимость",
+        "wrong_length_delivery": "Неверная длительность пути",
+        "wrong_distance": "Неверное расстояние"
     },
     "sentences": {
         "success_registration": "Регистрация прошла успешно",
         "success_login": "Вы успешно аутентифицировались",
         "in_account": "В аккаунт",
-        "logout": "Вы успешно вышли из аккаунта"
+        "logout": "Вы успешно вышли из аккаунта",
+        "copyright": "Все права защищены",
+        "email": "Электронная почта",
+        "company_name": "Название компании",
+        "departure_point": "Точка отправления",
+        "arrival_point": "Точка прибытия",
+        "length_delivery": "Длительности пути",
+        "in_rubles": "в рублях",
+        "in_hours": "в часах",
+        "in_km": "в километрах",
+        "not_selected": "Не выбрано",
+        "route_created": "Маршрут создан"
     },
     "header": {
         "menu_items": [
@@ -122,5 +138,8 @@
                 }
             ]
         }
+    },
+    "routes": {
+        "creating_route": "Создание маршрута"
     }
 }

@@ -14,7 +14,7 @@ const changeLanguage = () => {
 }
 
 const logout = () => {
-    axios.post('/api/user/auth/manufacturer/logout').then(response => {
+    axios.post('/api/user/auth/manufacturer/logout').then(() => {
         toast.success(t('sentences.logout'));
         router.push('/');
     }).catch(error => {
@@ -27,7 +27,9 @@ const logout = () => {
 <template>
     <header class="bg-white text-orange-400 p-4 flex justify-between items-center shadow-lg">
         <div>
-            <router-link active-class="border-orange-400" v-for="button in $tm('header.manufacturer_header')" :title="button.label" :to="button.route " class="font-semibold px-4 py-2 rounded-full hover:border-orange-400 border-2 border-transparent transition-all ml-5">
+            <router-link v-for="button in $tm('header.manufacturer_header')" :title="button.label"
+                         :to="button.route" active-class="border-orange-400"
+                         class="border-gray-200 font-semibold px-4 py-2 rounded-full hover:border-orange-400 border-2 transition-all ml-5">
                 {{ button.label }}
             </router-link>
         </div>

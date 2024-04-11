@@ -186,12 +186,12 @@ const addErrorFocusListener = (element) => {
                    type="text">
         </div>
         <div v-if="accountType === 'manufacturer'" class="mb-6">
-            <input id="company_name" v-model="companyName" :placeholder="$t('words.company_name')"
+            <input id="company_name" v-model="companyName" :placeholder="$t('sentences.company_name')"
                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                    type="text">
         </div>
         <div class="mb-6">
-            <input id="email" v-model="email" :placeholder="$t('words.email')"
+            <input id="email" v-model="email" :placeholder="$t('sentences.email')"
                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                    type="email">
         </div>

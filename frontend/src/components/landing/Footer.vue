@@ -4,7 +4,7 @@ const currentYear = new Date().getFullYear();
 
 <template>
     <footer class="flex justify-center items-center bg-orange-400 text-white py-5">
-        &copy; {{ currentYear + ' ' + $t('words.copyright') }}
+        &copy; {{ currentYear + ' ' + $t('sentences.copyright') }}
     </footer>
 </template>
 

@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import { ref } from 'vue';
+import {createRouter, createWebHistory} from 'vue-router';
+import {ref} from 'vue';
 import landingRouter from "@/pages/landing/landingRouter.js";
 import manufacturerRouter from "@/pages/manufacturer/manufacturerRouter.js";
 import axios from "@/axios.js";
@@ -22,6 +22,18 @@ router.beforeEach(async (to, from, next) => {
         }
     } catch (error) {
         isAuthenticated.value = false;
+    }
+
+    if (!isAuthenticated.value) {
+        const responseRefreshToken = await axios.post(`/api/user/auth/${localStorage.getItem('account_type')}/refresh`);
+
+        if (responseRefreshToken.data.status !== false) {
+            const {jwt_token} = responseRefreshToken.data;
+            localStorage.setItem('jwt_token', jwt_token);
+
+            const response = await axios.post(`/api/user/auth/${localStorage.getItem('account_type') || 'buyer'}/valid`);
+            isAuthenticated.value = response.data.status;
+        }
     }
 
     if (!to.meta.authRequired || isAuthenticated.value) {
