@@ -21,7 +21,11 @@
         "create": "Создать",
         "cost": "Стоимость",
         "distance": "Расстояние",
-        "save": "Сохранить"
+        "save": "Сохранить",
+        "edit": "Изменить",
+        "delete": "Удалить",
+        "short_km": "км",
+        "short_hours": "час."
     },
     "errors": {
         "required_company_name": "Название компании не заполнено",
@@ -57,7 +61,10 @@
         "in_hours": "в часах",
         "in_km": "в километрах",
         "not_selected": "Не выбрано",
-        "route_created": "Маршрут создан"
+        "route_created": "Маршрут создан",
+        "route_edited": "Маршрут изменён",
+        "route_deleted": "Маршрут удалён",
+        "routes_not_found": "Созданные маршруты не найдены"
     },
     "header": {
         "menu_items": [

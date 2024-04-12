@@ -8,6 +8,8 @@ import en from './locales/en.json';
 import ru from './locales/ru.json';
 import {createI18n} from 'vue-i18n';
 import instance from './axios.js';
+import VueAwesomePaginate from "vue-awesome-paginate";
+import 'vue-awesome-paginate/dist/style.css';
 
 const i18n = createI18n({
     locale: localStorage.getItem('locale') || 'en',
@@ -25,6 +27,7 @@ app.config.globalProperties.$http = instance;
 
 app.use(router);
 app.use(i18n);
+app.use(VueAwesomePaginate);
 app.use(Toast, {
     position: POSITION.BOTTOM_RIGHT
 });

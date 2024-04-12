@@ -41,6 +41,10 @@ Route::prefix('user')->group(function () {
 Route::prefix('manufacturer')->group(function () {
     Route::prefix('route')->group(function () {
         Route::post('/', [RouteController::class, 'store']);
+        Route::get('/', [RouteController::class, 'index']);
+        Route::get('/{id}', [RouteController::class, 'show']);
+        Route::post('/{id}', [RouteController::class, 'update']);
+        Route::delete('/{id}', [RouteController::class, 'destroy']);
     });
 })->middleware('auth:manufacturer');
 

@@ -11,6 +11,10 @@ const toast = useToast();
 
 const cities = ref([]);
 
+const props = defineProps({
+    id: {type: Number, default: 0}
+});
+
 async function fetchCities() {
     try {
         const response = await axios.get('/api/city');
@@ -18,7 +22,23 @@ async function fetchCities() {
     } catch (error) {
         toast.error(t('errors.unexpected_error'))
     }
+}
 
+async function fetchRoute() {
+    if (props.id !== 0) {
+        try {
+            const response = await axios.get(`/api/manufacturer/route/${props.id}`);
+
+            route.value.departure_point = response.data.departure_point;
+            route.value.arrival_point = response.data.arrival_point;
+            route.value.cost = response.data.cost;
+            route.value.length_delivery = response.data.length_delivery;
+            route.value.distance = response.data.distance;
+
+        } catch (error) {
+            toast.error(t('errors.unexpected_error'))
+        }
+    }
 }
 
 const route = ref({
@@ -46,10 +66,21 @@ const create = () => {
         toast.error(errorMessage);
     }
 
+    let url = '/api/manufacturer/route';
+
+    if (props.id !== 0) {
+        url = `/api/manufacturer/route/${props.id}`
+    }
+
     if (errors) {
-        axios.post(`/api/manufacturer/route`, route.value)
+        axios.post(url, route.value)
             .then(() => {
-                toast.success(t('sentences.route_created'))
+                if (props.id !== 0) {
+                    toast.success(t('sentences.route_edited'));
+                } else {
+                    toast.success(t('sentences.route_created'));
+                }
+
                 closeModal();
             })
             .catch(error => {
@@ -104,7 +135,10 @@ const addErrorFocusListener = (element) => {
     });
 }
 
-onMounted(fetchCities)
+onMounted(() => {
+    fetchCities();
+    fetchRoute();
+})
 </script>
 
 <template>
