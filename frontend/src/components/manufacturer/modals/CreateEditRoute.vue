@@ -17,8 +17,8 @@ const props = defineProps({
 
 async function fetchCities() {
     try {
-        const response = await axios.get('/api/city');
-        cities.value = response.data.cities;
+        const response = await axios.get('/api/manufacturer/route/city');
+        cities.value = response.data;
     } catch (error) {
         toast.error(t('errors.unexpected_error'))
     }
@@ -156,7 +156,7 @@ onMounted(() => {
                 <select id="departure_point" v-model="route.departure_point"
                         class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400">
                     <option value="0">{{ $t('sentences.not_selected') }}</option>
-                    <option v-for="city in cities" :value="city.id">{{ city.city }}</option>
+                    <option v-for="city in cities.warehouse_cities" :value="city.id">{{ city.city }}</option>
                 </select>
             </div>
             <div class="flex flex-col w-64">
@@ -164,7 +164,7 @@ onMounted(() => {
                 <select id="arrival_point" v-model="route.arrival_point"
                         class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400">
                     <option value="0">{{ $t('sentences.not_selected') }}</option>
-                    <option v-for="city in cities" :value="city.id">{{ city.city }}</option>
+                    <option v-for="city in cities.pickup_cities" :value="city.id">{{ city.city }}</option>
                 </select>
             </div>
         </div>

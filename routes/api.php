@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\PointController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\Users\Auth\BuyerAuthController;
 use App\Http\Controllers\Users\Auth\ManufacturerAuthController;
@@ -40,12 +41,25 @@ Route::prefix('user')->group(function () {
 
 Route::prefix('manufacturer')->group(function () {
     Route::prefix('route')->group(function () {
+        Route::prefix('city')->group(function () {
+            Route::get('/', [CityController::class, 'routesCities']);
+        });
+
         Route::post('/', [RouteController::class, 'store']);
         Route::get('/', [RouteController::class, 'index']);
         Route::get('/{id}', [RouteController::class, 'show']);
         Route::post('/{id}', [RouteController::class, 'update']);
         Route::delete('/{id}', [RouteController::class, 'destroy']);
+
+    });
+
+    Route::prefix('point')->group(function () {
+        Route::post('/', [PointController::class, 'store']);
+        Route::get('/', [PointController::class, 'index']);
+        Route::delete('/{id}', [PointController::class, 'destroy']);
+    });
+
+    Route::prefix('city')->group(function () {
+        Route::get('/', [CityController::class, 'index']);
     });
 })->middleware('auth:manufacturer');
-
-Route::get('/city', [CityController::class, 'index'])->middleware('auth:manufacturer');

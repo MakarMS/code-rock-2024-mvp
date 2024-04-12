@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Users\RouteRequest;
+use App\Http\Requests\RouteRequest;
 use App\Http\Resources\RouteResource;
 use App\Models\Route;
 use Illuminate\Http\JsonResponse;

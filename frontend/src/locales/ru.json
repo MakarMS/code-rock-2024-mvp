@@ -25,7 +25,10 @@
         "edit": "Изменить",
         "delete": "Удалить",
         "short_km": "км",
-        "short_hours": "час."
+        "short_hours": "час.",
+        "city": "Город",
+        "type": "Тип",
+        "warehouse": "Склад"
     },
     "errors": {
         "required_company_name": "Название компании не заполнено",
@@ -44,7 +47,9 @@
         "required_arrival_point": "Выберите точку прибытия",
         "wrong_cost": "Неверная стоимость",
         "wrong_length_delivery": "Неверная длительность пути",
-        "wrong_distance": "Неверное расстояние"
+        "wrong_distance": "Неверное расстояние",
+        "required_city": "Выберите город точки",
+        "required_point_type": "Выберите тип точки"
     },
     "sentences": {
         "success_registration": "Регистрация прошла успешно",
@@ -66,7 +71,12 @@
         "route_deleted": "Маршрут удалён",
         "routes_not_found": "Созданные маршруты не найдены",
         "creating_route": "Создание маршрута",
-        "editing_route": "Редактирование маршрута"
+        "editing_route": "Редактирование маршрута",
+        "point_created": "Точка создана",
+        "point_deleted": "Точка удалёна",
+        "points_not_found": "Созданные точки не найдены",
+        "creating_point": "Создание точки",
+        "pickup_point": "Пункт выдачи заказов"
     },
     "header": {
         "menu_items": [
@@ -99,16 +109,16 @@
                 "route": "/manufacturer"
             },
             {
+                "label": "Пункты выдачи/Склады",
+                "route": "/manufacturer/points"
+            },
+            {
                 "label": "Маршруты",
                 "route": "/manufacturer/routes"
             },
             {
                 "label": "Продукты",
                 "route": "/manufacturer/products"
-            },
-            {
-                "label": "Статистика",
-                "route": "/manufacturer/statistics"
             }
         ]
     },

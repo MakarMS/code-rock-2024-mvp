@@ -1,13 +1,21 @@
 import DashboardPage from "@/pages/manufacturer/DashboardPage.vue";
 import RoutesPage from "@/pages/manufacturer/RoutesPage.vue";
 import ProductsPage from "@/pages/manufacturer/ProductsPage.vue";
-import StatisticsPage from "@/pages/manufacturer/StatisticsPage.vue";
+import PointsPage from "@/pages/manufacturer/PointsPage.vue";
 
 export default [
     {
         path: '/manufacturer',
         name: 'Dashboard',
         component: DashboardPage,
+        meta: {
+            authRequired: true
+        }
+    },
+    {
+        path: '/manufacturer/points',
+        name: 'Points',
+        component: PointsPage,
         meta: {
             authRequired: true
         }
@@ -24,14 +32,6 @@ export default [
         path: '/manufacturer/products',
         name: 'Products',
         component: ProductsPage,
-        meta: {
-            authRequired: true
-        }
-    },
-    {
-        path: '/manufacturer/statistics',
-        name: 'Statistics',
-        component: StatisticsPage,
         meta: {
             authRequired: true
         }
