@@ -43,26 +43,28 @@ const create = () => {
         toast.error(errorMessage);
     }
 
-    axios.post('/api/manufacturer/point', point.value)
-        .then(() => {
-            toast.success(t('sentences.point_created'));
-            closeModal();
-        })
-        .catch(error => {
-            console.error(error)
-            toast.error(t('errors.unexpected_error'));
-        });
+    if (!errors) {
+        axios.post('/api/manufacturer/point', point.value)
+            .then(() => {
+                toast.success(t('sentences.point_created'));
+                closeModal();
+            })
+            .catch(error => {
+                console.error(error)
+                toast.error(t('errors.unexpected_error'));
+            });
+    }
 }
 
 const validate = () => {
     let errors = [];
 
     if (point.value.type === 0) {
-        errors.push({'departure_point': t('errors.required_point_type')});
+        errors.push({'point_type': t('errors.required_point_type')});
     }
 
     if (point.value.city === 0) {
-        errors.push({'arrival_point': t('errors.required_city')});
+        errors.push({'city': t('errors.required_city')});
     }
 
     return errors;
