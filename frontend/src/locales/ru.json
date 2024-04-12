@@ -64,7 +64,9 @@
         "route_created": "Маршрут создан",
         "route_edited": "Маршрут изменён",
         "route_deleted": "Маршрут удалён",
-        "routes_not_found": "Созданные маршруты не найдены"
+        "routes_not_found": "Созданные маршруты не найдены",
+        "creating_route": "Создание маршрута",
+        "editing_route": "Редактирование маршрута"
     },
     "header": {
         "menu_items": [
@@ -145,8 +147,5 @@
                 }
             ]
         }
-    },
-    "routes": {
-        "creating_route": "Создание маршрута"
     }
 }

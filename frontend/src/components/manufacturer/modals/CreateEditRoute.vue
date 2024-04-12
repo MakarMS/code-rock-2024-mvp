@@ -146,7 +146,10 @@ onMounted(() => {
         <button class="absolute top-0 right-0 m-4 text-gray-600 hover:text-gray-900" @click="closeModal">
             <i class="pi pi-times"></i>
         </button>
-        <h2 class="text-2xl font-semibold text-left mb-6">{{ $t('routes.creating_route') }}</h2>
+        <h2 v-if="props.id !== 0" class="text-2xl font-semibold text-left mb-6">{{ $t('sentences.editing_route') }}</h2>
+        <h2 v-if="props.id === 0" class="text-2xl font-semibold text-left mb-6">{{
+                $t('sentences.creating_route')
+            }}</h2>
         <div class="flex justify-between mb-5">
             <div class="flex flex-col w-64">
                 <label class="block" for="departure_point">{{ $t('sentences.departure_point') }}</label>
