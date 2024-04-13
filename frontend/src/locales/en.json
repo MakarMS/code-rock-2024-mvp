@@ -1,22 +1,47 @@
 {
     "titles": {
-        "change_language": "Change language"
+        "change_language": "Change Language"
     },
     "words": {
-        "copyright": "All rights reserved",
         "sign_in": "Sign In",
-        "bayer": "Buyer",
+        "buyer": "Buyer",
         "manufacturer": "Manufacturer",
-        "email": "Email",
         "password": "Password",
-        "remember_password": "Remember Password",
         "to_sign_in": "Sign In",
         "first_name": "First Name",
         "last_name": "Last Name",
         "patronymic": "Patronymic",
         "sign_up": "Sign Up",
         "to_sign_up": "Sign Up",
-        "company_name": "Company Name"
+        "routes": "Routes",
+        "products": "Products",
+        "statistics": "Statistics",
+        "logout": "Logout",
+        "create": "Create",
+        "cost": "Cost",
+        "distance": "Distance",
+        "save": "Save",
+        "edit": "Edit",
+        "delete": "Delete",
+        "short_km": "km",
+        "short_hours": "hrs",
+        "city": "City",
+        "type": "Type",
+        "warehouse": "Warehouse",
+        "sizes": "Sizes",
+        "mass": "Mass",
+        "description": "Description",
+        "short_kg": "kg",
+        "short_sizes": "HxWxD",
+        "height": "Height",
+        "width": "Width",
+        "depth": "Depth",
+        "m": "m",
+        "open": "Open",
+        "name": "Name",
+        "buy": "Buy",
+        "quantity": "Quantity",
+        "pcs": "pcs"
     },
     "errors": {
         "required_company_name": "Company name is required",
@@ -26,20 +51,75 @@
         "required_email": "Email is required",
         "required_password": "Password is required",
         "format_email": "Invalid email format",
-        "min_length_password": "Password length is less than 6 characters",
-        "max_length_password": "Password length is more than 50 characters",
-        "unexpected_error": "Unexpected error",
-        "not_unique_email": "Email already in use",
-        "wrong_login": "Incorrect email or password"
+        "min_length_password": "Password must be at least 6 characters long",
+        "max_length_password": "Password cannot be longer than 50 characters",
+        "unexpected_error": "An unexpected error occurred",
+        "not_unique_email": "Email is already taken",
+        "wrong_login": "Incorrect email or password",
+        "required_departure_point": "Departure point is required",
+        "required_arrival_point": "Arrival point is required",
+        "wrong_cost": "Invalid cost",
+        "wrong_length_delivery": "Invalid delivery length",
+        "wrong_distance": "Invalid distance",
+        "required_city": "City is required",
+        "required_point_type": "Point type is required",
+        "required_product_name": "Product name is required",
+        "required_height": "Height is required",
+        "required_width": "Width is required",
+        "required_depth": "Depth is required",
+        "required_mass": "Mass is required",
+        "required_description": "Description is required",
+        "required_image": "Image is required",
+        "required_count": "Quantity is required",
+        "required_delivery_route": "Delivery route is required"
     },
     "sentences": {
         "success_registration": "Registration successful",
-        "success_login": "You have been successfully authenticated"
+        "success_login": "You have successfully logged in",
+        "in_account": "In account",
+        "logout": "You have successfully logged out",
+        "copyright": "All rights reserved",
+        "email": "Email",
+        "company_name": "Company Name",
+        "departure_point": "Departure Point",
+        "arrival_point": "Arrival Point",
+        "length_delivery": "Delivery Length",
+        "in_rubles": "in rubles",
+        "in_hours": "in hours",
+        "in_km": "in kilometers",
+        "not_selected": "Not selected",
+        "route_created": "Route created",
+        "route_edited": "Route edited",
+        "route_deleted": "Route deleted",
+        "routes_not_found": "No created routes found",
+        "creating_route": "Creating route",
+        "editing_route": "Editing route",
+        "point_created": "Point created",
+        "point_deleted": "Point deleted",
+        "points_not_found": "No created points found",
+        "creating_point": "Creating point",
+        "pickup_point": "Pickup Point",
+        "product_name": "Product Name",
+        "product_created": "Product created",
+        "product_edited": "Product edited",
+        "product_deleted": "Product deleted",
+        "products_not_found": "No created products found",
+        "creating_product": "Creating product",
+        "editing_product": "Editing product",
+        "product_info": "Product Information",
+        "delivery_plan": "Delivery Plan",
+        "delivery_plan_cheap": "Cheapest",
+        "delivery_plan_fast": "Fastest",
+        "delivery_plan_short": "Shortest",
+        "delivery_route": "Delivery Route",
+        "product_ordered": "Product ordered",
+        "reorder": "Reorder",
+        "product_reordered": "Product reordered"
     },
     "header": {
         "menu_items": [
             {
-                "label": "About Us",
+                "label": "About",
                 "url": "#about"
             },
             {
@@ -60,30 +140,58 @@
                 "label": "Sign Up",
                 "modal": "signUpModal"
             }
+        ],
+        "manufacturer_header": [
+            {
+                "label": "Pickup Points / Warehouses",
+                "route": "/manufacturer"
+            },
+            {
+                "label": "Routes",
+                "route": "/manufacturer/routes"
+            },
+            {
+                "label": "Products",
+                "route": "/manufacturer/products"
+            },
+            {
+                "label": "Orders",
+                "route": "/manufacturer/orders"
+            }
+        ],
+        "buyer_header": [
+            {
+                "label": "Products",
+                "route": "/buyer"
+            },
+            {
+                "label": "Orders",
+                "route": "/buyer/orders"
+            }
         ]
     },
     "home": {
         "main": {
             "about": {
-                "title": "Wholesale B2B Purchases - Easy Route",
-                "text": "For over 12 years, we have remained leaders in the B2B segment in the field of wholesale purchases and delivery management of manufactured products. Our assortment includes thousands of products from trusted suppliers, guaranteeing quality and reliability. We strive to provide our clients with the best cooperation terms and prompt support. Our experience and professionalism allow us to successfully meet the needs of even the most demanding clients. <br><br>Join us and see the benefits of cooperation with the industry leader!"
+                "title": "Wholesale B2B Purchases — Easy Route",
+                "text": "For over 12 years, we have been the leaders in the B2B segment in the field of wholesale purchases and production management. Our assortment includes thousands of products from trusted suppliers, guaranteeing quality and reliability. We strive to provide our customers with the best cooperation conditions and prompt support. Our experience and professionalism allow us to successfully meet the needs of even the most demanding customers. <br><br>Join us and see the benefits of working with the industry leader!"
             },
             "services": [
                 {
-                    "title": "B2B Marketplace for Manufacturing Products",
+                    "title": "B2B Marketplace for Production Items",
                     "text": "We provide you with a convenient and secure service for wholesale B2B purchases from manufacturers without risks and intermediaries."
                 },
                 {
                     "title": "Calculation of Optimal Delivery Routes",
-                    "text": "Our website service calculates optimal delivery routes for you from company warehouses to pickup points, ensuring efficient and reliable transportation."
+                    "text": "Our website service calculates optimal delivery routes for you, from company warehouses to pickup points."
                 },
                 {
-                    "title": "Logistics Support",
-                    "text": "We provide efficient logistical support for fast and reliable delivery of goods from manufacturers to you, ensuring timely and secure door-to-door delivery."
+                    "title": "Logistical Support",
+                    "text": "We provide efficient logistical support for fast and reliable delivery of goods from manufacturers to you."
                 },
                 {
-                    "title": "Round-the-Clock Support",
-                    "text": "We offer round-the-clock support to solve any issues related to your wholesale purchases, providing prompt and reliable assistance for smooth transactions."
+                    "title": "24/7 Support",
+                    "text": "We provide 24/7 support to solve any issues and problems related to your wholesale purchases."
                 }
             ],
             "contacts": [
@@ -92,11 +200,10 @@
                     "contacts": ["makar.mikhalchenko@bk.ru", "t.me/makar_mikhalchenko", "+7-(800)-555-35-35"]
                 },
                 {
-                    "title": "Makers Support",
+                    "title": "Manufacturer Support",
                     "contacts": ["makar.mikhalchenko@bk.ru", "t.me/makar_mikhalchenko", "+7-(800)-555-35-35"]
                 }
             ]
         }
     }
-
 }
