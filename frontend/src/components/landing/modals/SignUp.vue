@@ -161,7 +161,7 @@ const addErrorFocusListener = (element) => {
                 :class="['px-4 py-2 rounded-full font-semibold text-sm mr-2', accountType === 'buyer' ? 'bg-orange-400 text-white' : 'bg-gray-300 text-gray-700']"
                 @click="changeAccountType('buyer')"
             >
-                {{ $t('words.bayer') }}
+                {{ $t('words.buyer') }}
             </button>
             <button
                 :class="['px-4 py-2 rounded-full font-semibold text-sm ml-2', accountType === 'manufacturer' ? 'bg-orange-400 text-white' : 'bg-gray-300 text-gray-700']"
