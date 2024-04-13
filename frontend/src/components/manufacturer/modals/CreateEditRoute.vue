@@ -72,7 +72,7 @@ const create = () => {
         url = `/api/manufacturer/route/${props.id}`
     }
 
-    if (errors) {
+    if (!errors.length) {
         axios.post(url, route.value)
             .then(() => {
                 if (props.id !== 0) {

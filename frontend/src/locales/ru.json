@@ -28,7 +28,16 @@
         "short_hours": "час.",
         "city": "Город",
         "type": "Тип",
-        "warehouse": "Склад"
+        "warehouse": "Склад",
+        "sizes": "Размеры",
+        "mass": "Масса",
+        "description": "Описание",
+        "short_kg": "кг.",
+        "short_sizes": "ВхШхГ",
+        "height": "В",
+        "width": "Ш",
+        "depth": "Г",
+        "m": "м"
     },
     "errors": {
         "required_company_name": "Название компании не заполнено",
@@ -43,13 +52,20 @@
         "unexpected_error": "Неизвестная ошибка",
         "not_unique_email": "Данная электронная почта уже занята",
         "wrong_login": "Неверная электронная почта или пароль",
-        "required_departure_point": "Выберите точку отправления",
-        "required_arrival_point": "Выберите точку прибытия",
+        "required_departure_point": "Точка отправления не заполнена",
+        "required_arrival_point": "Точка прибытия не заполнена",
         "wrong_cost": "Неверная стоимость",
         "wrong_length_delivery": "Неверная длительность пути",
         "wrong_distance": "Неверное расстояние",
-        "required_city": "Выберите город точки",
-        "required_point_type": "Выберите тип точки"
+        "required_city": "Город точки не заполнен",
+        "required_point_type": "Тип точки не заполнен",
+        "required_product_name": "Название продукта не заполнено",
+        "required_height": "Высота продукта не заполнена",
+        "required_width": "Ширина продукта не заполнена",
+        "required_depth": "Глубина продукта не заполнена",
+        "required_mass": "Масса продукта не заполнена",
+        "required_description": "Описание продукта не заполнено",
+        "required_image": "Изображение продукта не добавлено"
     },
     "sentences": {
         "success_registration": "Регистрация прошла успешно",
@@ -76,7 +92,14 @@
         "point_deleted": "Точка удалёна",
         "points_not_found": "Созданные точки не найдены",
         "creating_point": "Создание точки",
-        "pickup_point": "Пункт выдачи заказов"
+        "pickup_point": "Пункт выдачи заказов",
+        "product_name": "Название продукта",
+        "product_created": "Продукт создан",
+        "product_edited": "Продукт изменён",
+        "product_deleted": "Продукт удалён",
+        "products_not_found": "Созданные продукты не найдены",
+        "creating_product": "Создание продукта",
+        "editing_product": "Редактирование продукта"
     },
     "header": {
         "menu_items": [

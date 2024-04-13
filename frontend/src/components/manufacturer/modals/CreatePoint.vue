@@ -43,7 +43,7 @@ const create = () => {
         toast.error(errorMessage);
     }
 
-    if (!errors) {
+    if (!errors.length) {
         axios.post('/api/manufacturer/point', point.value)
             .then(() => {
                 toast.success(t('sentences.point_created'));

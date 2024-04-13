@@ -12,6 +12,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenBlacklistedException;
 
 class ManufacturerAuthController extends Controller
@@ -58,7 +59,7 @@ class ManufacturerAuthController extends Controller
     {
         try {
             return (new UserAuthService())->respondWithToken(Auth::refresh());
-        } catch (TokenBlacklistedException) {
+        } catch (TokenBlacklistedException|JWTException) {
             return new JsonResponse(['status' => false], 200);
         }
     }

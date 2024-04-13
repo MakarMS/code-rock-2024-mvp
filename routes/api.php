@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PointController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\Users\Auth\BuyerAuthController;
 use App\Http\Controllers\Users\Auth\ManufacturerAuthController;
@@ -61,5 +62,14 @@ Route::prefix('manufacturer')->group(function () {
 
     Route::prefix('city')->group(function () {
         Route::get('/', [CityController::class, 'index']);
+    });
+
+    Route::prefix('product')->group(function () {
+        Route::post('/', [ProductController::class, 'store']);
+        Route::get('/', [ProductController::class, 'index']);
+        Route::get('/{id}', [ProductController::class, 'show']);
+        Route::post('/{id}', [ProductController::class, 'update']);
+        Route::delete('/{id}', [ProductController::class, 'destroy']);
+
     });
 })->middleware('auth:manufacturer');

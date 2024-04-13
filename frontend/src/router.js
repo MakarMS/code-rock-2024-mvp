@@ -15,6 +15,10 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+    if (!localStorage.getItem('account_type')) {
+        localStorage.setItem('account_type', 'manufacturer');
+    }
+
     try {
         if (to.meta.authRequired) {
             const response = await axios.post(`/api/user/auth/${localStorage.getItem('account_type') || 'buyer'}/valid`);
