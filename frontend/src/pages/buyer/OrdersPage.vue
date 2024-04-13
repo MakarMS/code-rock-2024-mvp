@@ -1,37 +1,37 @@
 <script setup>
 import Header from '../../components/buyer/Header.vue';
-import ProductCard from "@/components/buyer/ProductCard.vue";
 import {onMounted, ref} from "vue";
 import axios from "@/axios.js";
 import {VueAwesomePaginate} from "vue-awesome-paginate";
 
 import {useToast} from "vue-toastification";
 import {useI18n} from "vue-i18n";
+import OrderCard from "@/components/buyer/OrderCard.vue";
 
 const {t} = useI18n();
 const toast = useToast();
 
-async function fetchProducts(page) {
+async function fetchOrders(page) {
     try {
-        const response = await axios.get(`/api/buyer/product/?page=${page}`);
-        products.value = response.data.data;
-        currentPage.value = response.data.meta.current_page;
-        total.value = response.data.meta.total
+        const response = await axios.get(`/api/buyer/order/?page=${page}`);
+        orders.value = response.data.orders;
+        currentPage.value = response.data.current_page;
+        total.value = response.data.total
     } catch (error) {
         toast.error(t('errors.unexpected_error'));
     }
 }
 
 const paginateHandler = (page) => {
-    fetchProducts(page);
+    fetchOrders(page);
 };
 
-const products = ref([]);
+const orders = ref([]);
 const currentPage = ref(1);
 const total = ref(0);
 
 onMounted(() => {
-    fetchProducts(currentPage.value);
+    fetchOrders(currentPage.value);
 })
 </script>
 
@@ -39,7 +39,7 @@ onMounted(() => {
     <Header/>
     <main class="text-orange-400 w-12/12 h-full shadow-lg m-10 rounded-lg p-5">
         <div class="flex flex-col items-center">
-            <ProductCard v-for="product in products" :product="product"/>
+            <OrderCard v-for="order in orders" :order="order"/>
             <vue-awesome-paginate v-model="currentPage" :items-per-page="10" :max-pages-shown="5"
                                   :on-click="paginateHandler" :total-items="total" class="mt-10 flex justify-center"/>
         </div>
