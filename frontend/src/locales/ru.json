@@ -112,7 +112,9 @@
         "delivery_plan_fast": "Самый быстрый",
         "delivery_plan_short": "Самый короткий",
         "delivery_route": "Маршрут доставки",
-        "product_ordered": "Продукт заказан"
+        "product_ordered": "Продукт заказан",
+        "reorder": "Заказать повторно",
+        "product_reordered": "Продукт заказан повторно"
     },
     "header": {
         "menu_items": [

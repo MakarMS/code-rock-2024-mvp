@@ -39,7 +39,7 @@ onMounted(() => {
     <Header/>
     <main class="text-orange-400 w-12/12 h-full shadow-lg m-10 rounded-lg p-5">
         <div class="flex flex-col items-center">
-            <OrderCard v-for="order in orders" :order="order"/>
+            <OrderCard v-for="order in orders" :order="order" :page="currentPage" :reloadOrders="fetchOrders"/>
             <vue-awesome-paginate v-model="currentPage" :items-per-page="10" :max-pages-shown="5"
                                   :on-click="paginateHandler" :total-items="total" class="mt-10 flex justify-center"/>
         </div>

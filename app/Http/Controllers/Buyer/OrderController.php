@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Route;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -50,6 +51,18 @@ class OrderController extends Controller
         }
 
         return new JsonResponse($response);
+    }
+
+    public function reOrder(Request $response): JsonResponse
+    {
+        $id = $this->getId($response);
+
+        $lastOrder = Order::select()->where('buyer_id', Auth::guard('buyer')->id())->where('id', $id)->first();
+        $newOrder = $lastOrder->replicate();
+
+        $newOrder->save();
+
+        return new JsonResponse(null, 204);
     }
 
     public function store(OrderRequest $request): JsonResponse

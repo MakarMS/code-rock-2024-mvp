@@ -84,6 +84,7 @@ Route::prefix('buyer')->group(function () {
     });
 
     Route::prefix('order')->group(function () {
+        Route::post('/reorder/{id}', [OrderController::class, 'reOrder']);
         Route::get('/', [OrderController::class, 'index']);
         Route::post('/', [OrderController::class, 'store']);
     });
