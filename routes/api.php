@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\PointController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\RouteController;
+use App\Http\Controllers\Manufacturer\CityController;
+use App\Http\Controllers\Manufacturer\PointController;
+use App\Http\Controllers\Manufacturer\ProductController;
+use App\Http\Controllers\Manufacturer\RouteController;
 use App\Http\Controllers\Users\Auth\BuyerAuthController;
 use App\Http\Controllers\Users\Auth\ManufacturerAuthController;
 use Illuminate\Support\Facades\Route;
@@ -73,3 +73,11 @@ Route::prefix('manufacturer')->group(function () {
 
     });
 })->middleware('auth:manufacturer');
+
+
+Route::prefix('buyer')->group(function () {
+    Route::prefix('product')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Buyer\ProductController::class, 'index']);
+        Route::get('/{id}', [\App\Http\Controllers\Buyer\ProductController::class, 'show']);
+    });
+})->middleware('auth:buyer');

@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import {ref} from 'vue';
 import landingRouter from "@/pages/landing/landingRouter.js";
 import manufacturerRouter from "@/pages/manufacturer/manufacturerRouter.js";
+import buyerRouter from "@/pages/buyer/buyerRouter.js";
 import axios from "@/axios.js";
 
 const isAuthenticated = ref(false); // Переменная для хранения состояния аутентификации
@@ -10,7 +11,8 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         ...landingRouter,
-        ...manufacturerRouter
+        ...buyerRouter,
+        ...manufacturerRouter,
     ]
 });
 

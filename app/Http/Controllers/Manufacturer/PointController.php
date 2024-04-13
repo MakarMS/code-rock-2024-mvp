@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manufacturer;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PointRequest;
 use App\Http\Resources\PointResource;
 use App\Models\Point;
@@ -16,6 +17,7 @@ class PointController extends Controller
     {
         $points = Point::with('city')
             ->where('manufacturer_id', Auth::guard('manufacturer')->id())
+            ->orderBy('id', 'DESC')
             ->paginate(10);
 
         return PointResource::collection($points);

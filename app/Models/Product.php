@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Users\ManufacturerUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -20,4 +22,9 @@ class Product extends Model
         'depth',
         'mass'
     ];
+
+    public function manufacturer(): BelongsTo
+    {
+        return $this->belongsTo(ManufacturerUser::class, 'manufacturer_id');
+    }
 }

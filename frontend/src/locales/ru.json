@@ -37,7 +37,9 @@
         "height": "В",
         "width": "Ш",
         "depth": "Г",
-        "m": "м"
+        "m": "м",
+        "open": "Открыть",
+        "name": "Наименование"
     },
     "errors": {
         "required_company_name": "Название компании не заполнено",
@@ -99,7 +101,8 @@
         "product_deleted": "Продукт удалён",
         "products_not_found": "Созданные продукты не найдены",
         "creating_product": "Создание продукта",
-        "editing_product": "Редактирование продукта"
+        "editing_product": "Редактирование продукта",
+        "product_info": "Информация о продукте"
     },
     "header": {
         "menu_items": [
@@ -142,6 +145,12 @@
             {
                 "label": "Продукты",
                 "route": "/manufacturer/products"
+            }
+        ],
+        "buyer_header": [
+            {
+                "label": "Продукты",
+                "route": "/buyer"
             }
         ]
     },

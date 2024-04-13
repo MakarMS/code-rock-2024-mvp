@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manufacturer;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
@@ -16,6 +17,7 @@ class ProductController extends Controller
     {
         $products = Product::select('id', 'product_name', 'description', 'image', 'cost', 'height', 'width', 'depth', 'mass')
             ->where('manufacturer_id', Auth::guard('manufacturer')->id())
+            ->orderBy('id', 'DESC')
             ->paginate(10);
 
         return ProductResource::collection($products);

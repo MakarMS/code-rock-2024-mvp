@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manufacturer;
 
+use App\Http\Controllers\Controller;
 use App\Models\City;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;

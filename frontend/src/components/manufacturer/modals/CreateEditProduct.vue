@@ -196,13 +196,13 @@ onMounted(() => {
                 <div class="flex flex-col w-64">
                     <label class="block" for="product_name">{{ $t('sentences.product_name') }}</label>
                     <input id="product_name" v-model="product.product_name"
-                           class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                           class="text-center px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                            list="cost" type="text">
                 </div>
                 <div class="flex flex-col w-64 mt-5">
                     <label class="block" for="cost">{{ $t('words.cost') }} (₽) </label>
                     <input id="cost" v-model="product.cost"
-                           class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                           class="text-center px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                            type="text">
                 </div>
                 <div class="flex">
@@ -211,7 +211,7 @@ onMounted(() => {
                                 $t('words.m')
                             }}) </label>
                         <input id="height" v-model="product.height"
-                               class="mr-1 ml-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                               class="text-center mr-1 ml-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                                type="text">
                     </div>
                     <div class="flex flex-col w-20 mt-5">
@@ -219,7 +219,7 @@ onMounted(() => {
                                 $t('words.m')
                             }}) </label>
                         <input id="width" v-model="product.width"
-                               class="mr-1 ml-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                               class="text-center mr-1 ml-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                                type="text">
                     </div>
                     <div class="flex flex-col w-20 mt-5">
@@ -227,14 +227,14 @@ onMounted(() => {
                                 $t('words.m')
                             }}) </label>
                         <input id="depth" v-model="product.depth"
-                               class="mr-1 ml-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                               class="text-center mr-1 ml-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                                type="text">
                     </div>
                 </div>
                 <div class="flex flex-col w-64 mt-5">
-                    <label class="block" for="cost">{{ $t('words.mass') }} ({{ $t('words.short_kg') }}) </label>
-                    <input id="cost" v-model="product.mass"
-                           class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    <label class="block" for="mass">{{ $t('words.mass') }} ({{ $t('words.short_kg') }}) </label>
+                    <input id="mass" v-model="product.mass"
+                           class="text-center px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
                            type="text">
                 </div>
             </div>
@@ -242,7 +242,7 @@ onMounted(() => {
         <div class="flex flex-col mb-5 h-32">
             <label class="block" for="description">{{ $t('words.description') }}</label>
             <textarea id="description" v-model="product.description"
-                      class="w-full h-32 resize-none border-2 border-orange-400"></textarea>
+                      class="w-full h-32 resize-none border border-orange-400 p-2 rounded-md"></textarea>
         </div>
         <button class="w-1/3 bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 rounded-full" @click="create">
             {{ $t('words.save') }}

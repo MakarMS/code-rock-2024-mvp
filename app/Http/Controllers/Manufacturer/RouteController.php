@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manufacturer;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RouteRequest;
 use App\Http\Resources\RouteResource;
 use App\Models\Route;
@@ -16,6 +17,7 @@ class RouteController extends Controller
     {
         $routes = Route::with(['departurePoint', 'arrivalPoint'])
             ->where('manufacturer_id', Auth::guard('manufacturer')->id())
+            ->orderBy('id', 'DESC')
             ->paginate(10);
 
         return RouteResource::collection($routes);

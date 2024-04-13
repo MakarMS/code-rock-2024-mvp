@@ -30,7 +30,7 @@ export default [
     },
     {
         path: '/manufacturer/products',
-        name: 'Products',
+        name: 'ProductsManufacturer',
         component: ProductsPage,
         meta: {
             authRequired: true
