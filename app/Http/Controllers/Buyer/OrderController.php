@@ -71,7 +71,7 @@ class OrderController extends Controller
 
         $data['buyer_id'] = Auth::guard('buyer')->id();
         $data['cost'] = Product::find($data['product_id'])->cost * $data['count'];
-        $data['routes'] = json_encode(explode('-', $data['routes']));
+        $data['routes'] = explode('-', $data['routes']);
 
         $order = (new Order($data));
         $order->save();
