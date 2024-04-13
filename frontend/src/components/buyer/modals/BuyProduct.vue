@@ -217,7 +217,7 @@ onMounted(async () => {
                 </div>
             </div>
         </div>
-        <div class="flex flex-col mb-5 h-32">
+        <div class="flex flex-col mb-5 h-24">
             <label class="block" for="description">{{ $t('words.description') }}</label>
             <textarea id="description" :value="product.description" class="w-full h-32 resize-none border border-gray-300 p-2 rounded-md"
                       disabled></textarea>
@@ -237,7 +237,7 @@ onMounted(async () => {
                 </option>
             </select>
 
-            <p class="mt-5">{{ $t('sentences.delivery_plan_fast') }}</p>
+            <p class="mt-2">{{ $t('sentences.delivery_plan_fast') }}</p>
             <select id="fast_select" v-model="fastSelectedValue"
                     :disabled="fastDisabled"
                     class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
@@ -250,7 +250,7 @@ onMounted(async () => {
                 </option>
             </select>
 
-            <p class="mt-5">{{ $t('sentences.delivery_plan_short') }}</p>
+            <p class="mt-2">{{ $t('sentences.delivery_plan_short') }}</p>
             <select id="fast_select" v-model="shortSelectedValue"
                     :disabled="shortDisabled"
                     class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
