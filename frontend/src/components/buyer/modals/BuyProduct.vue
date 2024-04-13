@@ -14,6 +14,8 @@ const props = defineProps({
 
 const product = ref([]);
 
+const count = ref(0);
+
 async function fetchProduct() {
     try {
         const response = await axios.get(`/api/buyer/product/${props.id}`);
@@ -23,8 +25,113 @@ async function fetchProduct() {
     }
 }
 
-onMounted(() => {
-    fetchProduct();
+const deliveryRoutesCheap = ref([]);
+const deliveryRoutesFast = ref([]);
+
+let cheapSelectedValue = ref(0);
+let fastSelectedValue = ref(0);
+
+let cheapDisabled = ref(false);
+let fastDisabled = ref(false);
+
+async function fetchPlan(plan) {
+    try {
+        const response = await axios.get(`/api/buyer/delivery/plan/${plan}/?product_id=${props.id}`);
+        return response.data.data;
+    } catch (error) {
+        toast.error(t('errors.unexpected_error'))
+    }
+}
+
+const changeDeliveryPlan = (type) => {
+    if (type === 'cheap') {
+        if (cheapSelectedValue.value !== 0) {
+            fastSelectedValue.value = 0;
+            fastDisabled.value = false;
+        } else {
+            fastDisabled.value = true;
+        }
+    } else if (type === 'fast') {
+        if (fastSelectedValue.value !== 0) {
+            cheapSelectedValue.value = 0;
+            cheapDisabled.value = false;
+        } else {
+            cheapDisabled.value = true;
+        }
+    }
+}
+
+const buyProduct = () => {
+    const errors = validate();
+
+    for (const error of errors) {
+        const key = Object.keys(error)[0];
+        const errorMessage = error[key];
+
+        const element = document.getElementById(key);
+
+        if (element) {
+            addErrorClasses(element);
+            addErrorFocusListener(element);
+        }
+
+        toast.error(errorMessage);
+    }
+
+    if (!errors.length) {
+        const data = {
+            product_id: props.id,
+            count: count.value,
+            routes: cheapSelectedValue.value !== 0 ? cheapSelectedValue.value : fastSelectedValue.value
+        };
+
+        axios.post('/api/buyer/order', data)
+            .then(() => {
+                toast.success(t('sentences.product_ordered'));
+                closeModal();
+            })
+            .catch(error => {
+                console.error(error)
+                toast.error(t('errors.unexpected_error'));
+            });
+    }
+}
+
+const validate = () => {
+    let errors = [];
+
+    const countValidate = Number(count.value);
+    if (isNaN(countValidate) || countValidate <= 0) {
+        errors.push({'count': t('errors.required_count')});
+    }
+
+    if (cheapSelectedValue.value === 0 && fastSelectedValue.value === 0) {
+        errors.push({'cheap_select': t('errors.required_delivery_route')});
+    }
+
+    return errors;
+}
+
+const addErrorClasses = (element) => {
+    element.classList.remove('border-gray-300');
+    element.classList.remove('focus:ring-orange-400');
+    element.classList.add('border-red-600');
+    element.classList.add('focus:ring-red-600');
+}
+
+const addErrorFocusListener = (element) => {
+    element.addEventListener('focusout', () => {
+        element.classList.remove('border-red-600');
+        element.classList.remove('focus:ring-red-600');
+        element.classList.add('border-gray-300');
+        element.classList.add('focus:ring-orange-400');
+    });
+}
+
+onMounted(async () => {
+    await fetchProduct();
+    deliveryRoutesCheap.value = await fetchPlan(1);
+    deliveryRoutesFast.value = await fetchPlan(2);
 });
 </script>
 
@@ -39,6 +146,9 @@ onMounted(() => {
         <div class="flex justify-between mb-5">
             <div class="flex flex-col justify-between">
                 <img :src="'http://api.localhost/storage/' + product.image" alt="" width="300px"/>
+                <input id="count" v-model="count" class="text-center px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                       min="0"
+                       type="number">
             </div>
             <div class="flex flex-col">
                 <div class="flex flex-col w-64">
@@ -92,8 +202,32 @@ onMounted(() => {
             <textarea id="description" :value="product.description" class="w-full h-32 resize-none border border-gray-300 p-2 rounded-md"
                       disabled></textarea>
         </div>
-        <button class="w-1/3 bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 rounded-full" @click="create">
-            {{ $t('words.save') }}
+        <div class="flex flex-col mb-5">
+            <p class="text-xl font-semibold text-left mb-6">{{ $t('sentences.delivery_plan') }}</p>
+            <p>{{ $t('sentences.delivery_plan_cheap') }}</p>
+            <select id="cheap_select" v-model="cheapSelectedValue"
+                    :disabled="cheapDisabled"
+                    class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" @change="() => changeDeliveryPlan('cheap')">
+                <option selected value="0">{{ $t('sentences.not_selected') }}</option>
+                <option v-for="route in deliveryRoutesCheap" :value="route.routes_ids.join('-')">
+                    {{ route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') }}
+                </option>
+            </select>
+
+            <p class="mt-5">{{ $t('sentences.delivery_plan_fast') }}</p>
+            <select id="fast_select" v-model="fastSelectedValue"
+                    :disabled="fastDisabled"
+                    class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" @change="() => changeDeliveryPlan('fast')">
+                <option selected value="0">{{ $t('sentences.not_selected') }}</option>
+                <option v-for="route in deliveryRoutesFast" :value="route.routes_ids.join('-')">
+                    {{ route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') }}
+                </option>
+            </select>
+        </div>
+
+        <button class="w-1/3 bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 rounded-full"
+                @click="buyProduct">
+            {{ $t('words.buy') }}
         </button>
     </div>
 </template>

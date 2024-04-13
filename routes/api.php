@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Buyer\OrderController;
+use App\Http\Controllers\Buyer\PlanController;
 use App\Http\Controllers\Manufacturer\CityController;
 use App\Http\Controllers\Manufacturer\PointController;
 use App\Http\Controllers\Manufacturer\ProductController;
@@ -79,5 +81,13 @@ Route::prefix('buyer')->group(function () {
     Route::prefix('product')->group(function () {
         Route::get('/', [\App\Http\Controllers\Buyer\ProductController::class, 'index']);
         Route::get('/{id}', [\App\Http\Controllers\Buyer\ProductController::class, 'show']);
+    });
+
+    Route::prefix('order')->group(function () {
+        Route::post('/', [OrderController::class, 'store']);
+    });
+
+    Route::prefix('delivery')->group(function () {
+        Route::get('plan/{id}', [PlanController::class, 'show']);
     });
 })->middleware('auth:buyer');

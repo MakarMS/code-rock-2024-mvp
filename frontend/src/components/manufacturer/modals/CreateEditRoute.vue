@@ -160,7 +160,7 @@ onMounted(() => {
                 </select>
             </div>
             <div class="flex flex-col w-64">
-                <label class="block" for="arrival_point">{{ $t('sentences.departure_point') }}</label>
+                <label class="block" for="arrival_point">{{ $t('sentences.arrival_point') }}</label>
                 <select id="arrival_point" v-model="route.arrival_point"
                         class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400">
                     <option value="0">{{ $t('sentences.not_selected') }}</option>

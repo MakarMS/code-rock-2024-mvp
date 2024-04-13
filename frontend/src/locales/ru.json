@@ -39,7 +39,8 @@
         "depth": "Г",
         "m": "м",
         "open": "Открыть",
-        "name": "Наименование"
+        "name": "Наименование",
+        "buy": "Купить"
     },
     "errors": {
         "required_company_name": "Название компании не заполнено",
@@ -67,7 +68,9 @@
         "required_depth": "Глубина продукта не заполнена",
         "required_mass": "Масса продукта не заполнена",
         "required_description": "Описание продукта не заполнено",
-        "required_image": "Изображение продукта не добавлено"
+        "required_image": "Изображение продукта не добавлено",
+        "required_count": "Количество товара не заполнено",
+        "required_delivery_route": "Тип доставки не задан"
     },
     "sentences": {
         "success_registration": "Регистрация прошла успешно",
@@ -102,7 +105,12 @@
         "products_not_found": "Созданные продукты не найдены",
         "creating_product": "Создание продукта",
         "editing_product": "Редактирование продукта",
-        "product_info": "Информация о продукте"
+        "product_info": "Информация о продукте",
+        "delivery_plan": "План доставки",
+        "delivery_plan_cheap": "Самый дешёвый",
+        "delivery_plan_fast": "Самый быстрый",
+        "delivery_route": "Маршрут доставки",
+        "product_ordered": "Продукт заказан"
     },
     "header": {
         "menu_items": [
