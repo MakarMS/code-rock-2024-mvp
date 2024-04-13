@@ -24,7 +24,7 @@
         "save": "Сохранить",
         "edit": "Изменить",
         "delete": "Удалить",
-        "short_km": "км",
+        "short_km": "км.",
         "short_hours": "час.",
         "city": "Город",
         "type": "Тип",
@@ -109,6 +109,7 @@
         "delivery_plan": "План доставки",
         "delivery_plan_cheap": "Самый дешёвый",
         "delivery_plan_fast": "Самый быстрый",
+        "delivery_plan_short": "Самый короткий",
         "delivery_route": "Маршрут доставки",
         "product_ordered": "Продукт заказан"
     },

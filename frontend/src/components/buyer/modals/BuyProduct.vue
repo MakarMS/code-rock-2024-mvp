@@ -27,12 +27,15 @@ async function fetchProduct() {
 
 const deliveryRoutesCheap = ref([]);
 const deliveryRoutesFast = ref([]);
+const deliveryRoutesShort = ref([]);
 
 let cheapSelectedValue = ref(0);
 let fastSelectedValue = ref(0);
+let shortSelectedValue = ref(0);
 
 let cheapDisabled = ref(false);
 let fastDisabled = ref(false);
+let shortDisabled = ref(false);
 
 async function fetchPlan(plan) {
     try {
@@ -47,16 +50,32 @@ const changeDeliveryPlan = (type) => {
     if (type === 'cheap') {
         if (cheapSelectedValue.value !== 0) {
             fastSelectedValue.value = 0;
+            shortSelectedValue.value = 0;
             fastDisabled.value = false;
+            shortDisabled.value = false;
         } else {
             fastDisabled.value = true;
+            shortDisabled.value = true;
         }
     } else if (type === 'fast') {
         if (fastSelectedValue.value !== 0) {
             cheapSelectedValue.value = 0;
+            shortSelectedValue.value = 0;
             cheapDisabled.value = false;
+            shortDisabled.value = false;
         } else {
             cheapDisabled.value = true;
+            shortDisabled.value = true;
+        }
+    } else if (type === 'short') {
+        if (shortSelectedValue.value !== 0) {
+            cheapSelectedValue.value = 0;
+            fastSelectedValue.value = 0;
+            cheapDisabled.value = false;
+            fastDisabled.value = false;
+        } else {
+            cheapDisabled.value = true;
+            fastDisabled.value = true;
         }
     }
 }
@@ -82,7 +101,7 @@ const buyProduct = () => {
         const data = {
             product_id: props.id,
             count: count.value,
-            routes: cheapSelectedValue.value !== 0 ? cheapSelectedValue.value : fastSelectedValue.value
+            routes: cheapSelectedValue.value !== 0 ? cheapSelectedValue.value : fastSelectedValue.value !== 0 ? fastSelectedValue.value : shortSelectedValue.value
         };
 
         axios.post('/api/buyer/order', data)
@@ -105,7 +124,7 @@ const validate = () => {
         errors.push({'count': t('errors.required_count')});
     }
 
-    if (cheapSelectedValue.value === 0 && fastSelectedValue.value === 0) {
+    if (cheapSelectedValue.value === 0 && fastSelectedValue.value === 0 && shortSelectedValue.value === 0) {
         errors.push({'cheap_select': t('errors.required_delivery_route')});
     }
 
@@ -132,6 +151,7 @@ onMounted(async () => {
     await fetchProduct();
     deliveryRoutesCheap.value = await fetchPlan(1);
     deliveryRoutesFast.value = await fetchPlan(2);
+    deliveryRoutesShort.value = await fetchPlan(3);
 });
 </script>
 
@@ -207,20 +227,39 @@ onMounted(async () => {
             <p>{{ $t('sentences.delivery_plan_cheap') }}</p>
             <select id="cheap_select" v-model="cheapSelectedValue"
                     :disabled="cheapDisabled"
-                    class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" @change="() => changeDeliveryPlan('cheap')">
+                    class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    @change="changeDeliveryPlan('cheap')">
                 <option selected value="0">{{ $t('sentences.not_selected') }}</option>
                 <option v-for="route in deliveryRoutesCheap" :value="route.routes_ids.join('-')">
-                    {{ route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') }}
+                    {{
+                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km')
+                    }}
                 </option>
             </select>
 
             <p class="mt-5">{{ $t('sentences.delivery_plan_fast') }}</p>
             <select id="fast_select" v-model="fastSelectedValue"
                     :disabled="fastDisabled"
-                    class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" @change="() => changeDeliveryPlan('fast')">
+                    class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    @change="changeDeliveryPlan('fast')">
                 <option selected value="0">{{ $t('sentences.not_selected') }}</option>
                 <option v-for="route in deliveryRoutesFast" :value="route.routes_ids.join('-')">
-                    {{ route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') }}
+                    {{
+                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km')
+                    }}
+                </option>
+            </select>
+
+            <p class="mt-5">{{ $t('sentences.delivery_plan_short') }}</p>
+            <select id="fast_select" v-model="shortSelectedValue"
+                    :disabled="shortDisabled"
+                    class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    @change="changeDeliveryPlan('short')">
+                <option selected value="0">{{ $t('sentences.not_selected') }}</option>
+                <option v-for="route in deliveryRoutesShort" :value="route.routes_ids.join('-')">
+                    {{
+                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km')
+                    }}
                 </option>
             </select>
         </div>

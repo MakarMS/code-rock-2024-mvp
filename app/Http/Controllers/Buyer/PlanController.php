@@ -17,7 +17,6 @@ class PlanController extends Controller
 
         $manufacturerId = Product::with('manufacturer')->where('id', $request->input('product_id'))->first()->manufacturer_id;
 
-
         $sql = '
                    WITH RECURSIVE optimal_paths AS (
                        SELECT
@@ -32,7 +31,7 @@ class PlanController extends Controller
                        SELECT
                            c.id AS city_id,
                            op.path || r.id AS path,
-                           op.cost + ' . ($planId === 1 ? 'r.cost AS cost' : 'r.length_delivery AS cost') . '
+                           op.cost + ' . ($planId === 1 ? 'r.cost AS cost' : ($planId === 2 ? 'r.length_delivery AS cost' : 'r.distance AS cost')) . '
                        FROM
                            optimal_paths op
                                JOIN
@@ -48,7 +47,7 @@ class PlanController extends Controller
                        optimal_paths JOIN points ON optimal_paths.city_id = points.city_id
                        WHERE points.manufacturer_id = ? AND type = 2 AND array_length(optimal_paths.path, 1) > 0 ORDER BY cost';
 
-        $routesByCost = array_column(DB::select($sql, [$manufacturerId, $manufacturerId]), null, 'cost');
+        $routesByCost = DB::select($sql, [$manufacturerId, $manufacturerId]);
 
         $response = [];
 
@@ -57,24 +56,22 @@ class PlanController extends Controller
 
             $routeResponse = [
                 'routes_ids' => $path,
-                'routes' => [
-
-                ]
             ];
 
             $totalCost = 0;
             $totalLengthDelivery = 0;
+            $totalDistance = 0;
 
             foreach ($path as $routeId) {
                 $route = Route::with(['departurePoint', 'arrivalPoint'])->find($routeId);
-                $routeResponse['routes'][] = ['from' => $route->departurePoint->city, 'to' => $route->arrivalPoint->city];
-
                 $totalCost += $route->cost;
                 $totalLengthDelivery += $route->length_delivery;
+                $totalDistance += $route->distance;
             }
 
             $routeResponse['total_cost'] = $totalCost;
             $routeResponse['total_length_delivery'] = $totalLengthDelivery;
+            $routeResponse['total_distance'] = $totalDistance;
 
             $response[] = $routeResponse;
         }
