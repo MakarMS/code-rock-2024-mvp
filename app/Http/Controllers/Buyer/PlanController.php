@@ -61,17 +61,20 @@ class PlanController extends Controller
             $totalCost = 0;
             $totalLengthDelivery = 0;
             $totalDistance = 0;
+            $arrivalPoint = '';
 
             foreach ($path as $routeId) {
                 $route = Route::with(['departurePoint', 'arrivalPoint'])->find($routeId);
                 $totalCost += $route->cost;
                 $totalLengthDelivery += $route->length_delivery;
                 $totalDistance += $route->distance;
+                $arrivalPoint = $route->arrivalPoint->city;
             }
 
             $routeResponse['total_cost'] = $totalCost;
             $routeResponse['total_length_delivery'] = $totalLengthDelivery;
             $routeResponse['total_distance'] = $totalDistance;
+            $routeResponse['arrival_point'] = $arrivalPoint;
 
             $response[] = $routeResponse;
         }

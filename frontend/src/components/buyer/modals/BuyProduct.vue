@@ -232,7 +232,7 @@ onMounted(async () => {
                 <option selected value="0">{{ $t('sentences.not_selected') }}</option>
                 <option v-for="route in deliveryRoutesCheap" :value="route.routes_ids.join('-')">
                     {{
-                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km')
+                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km') + ' — ' + route.arrival_point
                     }}
                 </option>
             </select>
@@ -245,7 +245,7 @@ onMounted(async () => {
                 <option selected value="0">{{ $t('sentences.not_selected') }}</option>
                 <option v-for="route in deliveryRoutesFast" :value="route.routes_ids.join('-')">
                     {{
-                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km')
+                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km') + ' — ' + route.arrival_point
                     }}
                 </option>
             </select>
@@ -258,7 +258,7 @@ onMounted(async () => {
                 <option selected value="0">{{ $t('sentences.not_selected') }}</option>
                 <option v-for="route in deliveryRoutesShort" :value="route.routes_ids.join('-')">
                     {{
-                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km')
+                        route.total_cost + '₽ — ' + route.total_length_delivery + ' ' + $t('words.short_hours') + ' — ' + route.total_distance + ' ' + $t('words.short_km') + ' — ' + route.arrival_point
                     }}
                 </option>
             </select>
