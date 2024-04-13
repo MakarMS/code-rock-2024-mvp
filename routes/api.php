@@ -74,6 +74,11 @@ Route::prefix('manufacturer')->group(function () {
         Route::delete('/{id}', [ProductController::class, 'destroy']);
 
     });
+
+    Route::prefix('order')->group(function () {
+        Route::get('/{id}', [\App\Http\Controllers\Manufacturer\OrderController::class, 'show']);
+        Route::get('/', [\App\Http\Controllers\Manufacturer\OrderController::class, 'index']);
+    });
 })->middleware('auth:manufacturer');
 
 

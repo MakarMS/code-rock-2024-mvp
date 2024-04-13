@@ -143,12 +143,8 @@
         ],
         "manufacturer_header": [
             {
-                "label": "Главная",
-                "route": "/manufacturer"
-            },
-            {
                 "label": "Пункты выдачи/Склады",
-                "route": "/manufacturer/points"
+                "route": "/manufacturer"
             },
             {
                 "label": "Маршруты",
@@ -157,6 +153,10 @@
             {
                 "label": "Продукты",
                 "route": "/manufacturer/products"
+            },
+            {
+                "label": "Заказы",
+                "route": "/manufacturer/orders"
             }
         ],
         "buyer_header": [
