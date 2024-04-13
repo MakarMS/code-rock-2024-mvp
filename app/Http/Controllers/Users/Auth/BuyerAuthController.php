@@ -12,6 +12,8 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenBlacklistedException;
 
 class BuyerAuthController extends Controller
 {
@@ -57,7 +59,11 @@ class BuyerAuthController extends Controller
 
     public function refresh(): JsonResponse
     {
-        return (new UserAuthService())->respondWithToken(Auth::refresh());
+        try {
+            return (new UserAuthService())->respondWithToken(Auth::refresh());
+        } catch (TokenBlacklistedException|JWTException) {
+            return new JsonResponse(['status' => false], 200);
+        }
     }
 
     public function valid(): JsonResponse
@@ -67,6 +73,8 @@ class BuyerAuthController extends Controller
 
     public function logout(): void
     {
-        Auth::logout();
+        if (Auth::guard('buyer')->check()) {
+            Auth::logout();
+        }
     }
 }
